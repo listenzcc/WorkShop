@@ -18,8 +18,9 @@ A tree structure will be established.
 - Field 1
   - Session 1
     - Editable file (.tex, .md)
-    - Portable file (.pdf, .html)
+    - Portable file (.pdf, .html, .png)
     - Setting file (.json)
+    - Executable file (.py)
   - Session 2
     - ...
     - ...
