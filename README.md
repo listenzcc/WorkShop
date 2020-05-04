@@ -5,6 +5,7 @@
   - [Information theory](#information-theory)
   - [Geometric theory](#geometric-theory)
   - [Programming trick](#programming-trick)
+    - [Tree Mapping Algorithm](#tree-mapping-algorithm)
   - [Software trick](#software-trick)
 
 My workshop for everything.
@@ -42,6 +43,10 @@ Useful geometric calculations.
 ## Programming trick
 
 Useful programming tricks.
+
+### Tree Mapping Algorithm
+
+Plot tree-like structure in a grid picture, area refers size.
 
 ## Software trick
 
