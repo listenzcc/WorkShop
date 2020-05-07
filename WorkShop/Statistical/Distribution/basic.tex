@@ -28,7 +28,7 @@ A collection of basic distribution knowledge.
 
 \subsection{Gamma function}
 
-An infinity integer is called as \emph{Gamma ($\Gamma$) function}
+An infinity integral is called as \emph{Gamma ($\Gamma$) function}
 
 \begin{equation}
     \Gamma(z) = \int_{0}^{\infty} x^{z-1} e^{-x} \,\mathrm{d}x
@@ -153,6 +153,11 @@ The mean and variance of the Student's t-distribution is
 \section{Appendix}
 
 \subsection{The relationship between $\Gamma$ and $B(\alpha, \beta)$}
+It is essential to know that
+\begin{equation*}
+    \Gamma(m)\Gamma(n) = B(m, n) \Gamma(m+n)
+\end{equation*}
+
 \begin{proof} \label{The relationship between Gamma and Beta}
 
     One can write
@@ -173,6 +178,12 @@ The mean and variance of the Student's t-distribution is
     \end{equation*}
     Hence proved.
 \end{proof}
+
+\subsection{The pdf of Student's t-distribution is a pdf}
+The values of $t_r(x)$ is positive and the integral is $1$.
+\begin{equation*}
+    \int_{-\infty}^{\infty} t_r(x) \,\mathrm{d}x = 1
+\end{equation*}
 
 \begin{proof} \label{The pdf of Student's t-distribution is a pdf}
     Consider the variable part of Student's t-distribution
@@ -199,6 +210,7 @@ The mean and variance of the Student's t-distribution is
     \begin{equation*}
         \frac{\Gamma(\frac{r+1}{2})}{\sqrt{r} \Gamma(\frac{r}{2}) \Gamma(\frac{1}{2})}
     \end{equation*}
+    which makes the integral of $t_r(x)$ is $1$.
 
 \end{proof}
 
