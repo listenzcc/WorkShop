@@ -4,6 +4,7 @@
   - [Definition of Process](#definition-of-process)
   - [Definition of Thread](#definition-of-thread)
   - [How to choose](#how-to-choose)
+  - [Warning](#warning)
 
 ## Definition of Process
 
@@ -27,3 +28,14 @@ From [Wiki](<https://en.wikipedia.org/wiki/Thread_(computing)>)
 Basic, a process can have multiple threads.
 So, if the function is asking for multiple threads computing, one should use multi-processing method.
 Otherwise, your multi-threading code will be running **extremely slow** since only one thread is executing.
+
+## Warning
+
+The use of multi-processing method is not all good.
+The processes are separated from each other, so the computing should be of minimal interaction.
+
+My suggestions is quite simple, which follows three steps:
+
+1. Compute in a process.
+2. Save results in the disk.
+3. Collect them after all is done.
