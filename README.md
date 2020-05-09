@@ -17,6 +17,7 @@
   - [Geometric theory](#geometric-theory)
   - [Programming trick](#programming-trick)
     - [Tree Mapping Algorithm](#tree-mapping-algorithm)
+    - [The selection between multi-processing and multi-threading](#the-selection-between-multi-processing-and-multi-threading)
     - [Todo: Python Bisect Module](#todo-python-bisect-module)
   - [Software trick](#software-trick)
 
@@ -80,7 +81,16 @@ Useful programming tricks.
 
 ### Tree Mapping Algorithm
 
+The code is in [TreeMap](Workshop/Programming/TreeMap/tree_map.py).
+
 Plot tree-like structure in a grid picture, area refers size.
+
+### The selection between multi-processing and multi-threading
+
+The detail is in [MultiProcessThread](Workshop/Programming/MultiProcessThread).
+
+The Process is logically containing several threads.
+So, if the function is asking for multiple threads computing, one should use multi-processing method.
 
 ### Todo: Python Bisect Module
 
