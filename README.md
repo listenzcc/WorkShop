@@ -2,11 +2,11 @@
 
 - [Workshop](#workshop)
   - [Statistical theory](#statistical-theory)
-    - [Todo: Gamma Function](#todo-gamma-function)
-    - [Todo: Normal Distribution](#todo-normal-distribution)
-    - [Todo: Chi-square Distribution](#todo-chi-square-distribution)
+    - [Gamma Function](#gamma-function)
+    - [Normal Distribution](#normal-distribution)
+    - [Chi-square Distribution](#chi-square-distribution)
     - [Todo: F Distribution](#todo-f-distribution)
-    - [Todo: Beta Distribution](#todo-beta-distribution)
+    - [Beta Distribution](#beta-distribution)
     - [Todo: Binominal Distribution](#todo-binominal-distribution)
   - [Information theory](#information-theory)
     - [Todo: Information Entropy](#todo-information-entropy)
@@ -45,15 +45,15 @@ A tree structure will be established.
 
 Distributions and their probability density function (pdf).
 
-### Todo: Gamma Function
+### Gamma Function
 
-### Todo: Normal Distribution
+### Normal Distribution
 
-### Todo: Chi-square Distribution
+### Chi-square Distribution
 
 ### Todo: F Distribution
 
-### Todo: Beta Distribution
+### Beta Distribution
 
 ### Todo: Binominal Distribution
 
