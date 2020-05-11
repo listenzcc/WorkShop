@@ -13,6 +13,7 @@
 \usepackage{float}
 
 \title{Basic of Distribution}
+
 \author{listenzcc}
 
 \begin{document}
@@ -20,19 +21,37 @@
 \maketitle
 
 \abstract
-A collection of basic distribution knowledge.
+A family of \emph{normal} distributions, like
+Normal, Chi-squared and Student's t-distribution.
+The Normal Distribution is the \emph{core} conception,
+all others are derived from it.
+
+This article begins with Gamma and Beta function.
+Since they are useful for computing the \emph{moments} the normal distribution family.
+
+Then the distributions are described one by one.
+
+The Appendix provides some necessary proofs.
 
 \tableofcontents
 
 \section{Pre-knowledge}
 
-\subsection{Gamma function}
+\subsection{Gamma and Beta function}
 
 An infinity integral is called as \emph{Gamma ($\Gamma$) function}
 
 \begin{equation}
     \Gamma(z) = \int_{0}^{\infty} x^{z-1} e^{-x} \,\mathrm{d}x
 \end{equation}
+
+The \emph{Beta ($B$) function} is a two-factor function, derived from $\Gamma$ function
+
+\begin{equation}
+    B(\alpha, \beta) = \frac{\Gamma(\alpha) \cdot \Gamma(\beta)}{\Gamma(\alpha + \beta)}
+\end{equation}
+
+\subsection{Important equations}
 
 \begin{proposition} \label{Gamma function propositions}
     Some very important equations.
@@ -60,18 +79,16 @@ An infinity integral is called as \emph{Gamma ($\Gamma$) function}
         \Gamma(z) = 2 \int_{0}^{\infty} x^{2z-1} e^{x^{2}} \,\mathrm{d}x
     \end{equation*}
 
-    The relationship between $\Gamma$ and Beta Function ($B(\alpha, \beta)$)
+    The relationship between $\Gamma$ and $B$ Function
     \begin{equation*}
-        \begin{aligned}
-            B(\alpha, \beta) & = \frac{\Gamma(\alpha) \cdot \Gamma(\beta)}{\Gamma(\alpha + \beta)} \\
-            B(\alpha, \beta) & = \int_{0}^{1} t^{\alpha-1} (1-t)^{\beta-1} \,\mathrm{d}t
-        \end{aligned}
+        B(\alpha, \beta) = \int_{0}^{1} t^{\alpha-1} (1-t)^{\beta-1} \,\mathrm{d}t
     \end{equation*}
     See \ref{The relationship between Gamma and Beta} for proof.
 
 \end{proposition}
 
 \section{Normal distribution}
+
 \subsection{Definition}
 It is hard to say normal distribution is what, since almost every thing follows it.
 
@@ -93,6 +110,7 @@ The mean and variance of the normal distribution is
 it is easy to proof using Proposition \ref{Gamma function propositions}.
 
 \section{Chi-squared distribution}
+
 \subsection{Definition}
 If $Y_i \sim N(0, 1)$, then
 \begin{equation}
@@ -116,7 +134,11 @@ The mean and variance of the chi-squared distribution is
 \end{equation*}
 it is easy to proof using Proposition \ref{Gamma function propositions}.
 
+\subsection{Relationship with Normal Distribution}
+The Chi-squared distribution is derived from Normal Distribution.
+
 \section{Student's t-distribution}
+
 \subsection{Definition}
 The probability distribution of a random variable $T$, of the form
 \begin{equation*}
@@ -136,8 +158,9 @@ The pdf of Student's t-distribution is
 \end{equation}
 it is easy to proof the pdf is a pdf using \ref{The pdf of Student's t-distribution is a pdf}.
 
-It is also easy to see that $\lim_{r \to \infty} t_r(x) \sim N(0, 1)$.
-It is the relationship between Student's t-distribution and normal distribution.
+\subsection{Relationship with Normal Distribution}
+It is easy to see that $\lim_{r \to \infty} t_r(x) \sim N(0, 1)$.
+It demonstrates that when $r$ is large enough, the Student's t-distribution is equalize to Normal Distribution.
 
 \subsection{Mean and Variance}
 The mean and variance of the Student's t-distribution is
@@ -159,7 +182,6 @@ It is essential to know that
 \end{equation*}
 
 \begin{proof} \label{The relationship between Gamma and Beta}
-
     One can write
     \begin{equation*}
         \Gamma(m)\Gamma(n) = \int_{0}^{\infty} x^{m-1} e^{-x} dx \int_{0}^{\infty} y^{n-1} e^{-y} dy
