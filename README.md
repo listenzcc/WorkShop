@@ -18,6 +18,7 @@
   - [Programming trick](#programming-trick)
     - [Tree Mapping Algorithm](#tree-mapping-algorithm)
     - [The selection between multi-processing and multi-threading](#the-selection-between-multi-processing-and-multi-threading)
+    - [Pie Graph](#pie-graph)
     - [Todo: Python Bisect Module](#todo-python-bisect-module)
   - [Software trick](#software-trick)
 
@@ -91,6 +92,10 @@ The detail is in [MultiProcessThread](Workshop/Programming/MultiProcessThread).
 
 The Process is logically containing several threads.
 So, if the function is asking for multiple threads computing, one should use multi-processing method.
+
+### Pie Graph
+
+Draw complex pie graph to present conjunction data.
 
 ### Todo: Python Bisect Module
 
