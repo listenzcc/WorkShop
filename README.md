@@ -97,6 +97,10 @@ So, if the function is asking for multiple threads computing, one should use mul
 
 Draw complex pie graph to present conjunction data.
 
+Several small wedges will small degrees compose a 360 degree cycle,
+each wedge has different radium.
+The data conjunction is presented as the combination between angle and radium.
+
 ### Todo: Python Bisect Module
 
 An useful python module for **Bisection** algorithms.
