@@ -5,8 +5,8 @@
     - [Gamma Function](#gamma-function)
     - [Normal Distribution](#normal-distribution)
     - [Chi-square Distribution](#chi-square-distribution)
-    - [Todo: F Distribution](#todo-f-distribution)
     - [Beta Distribution](#beta-distribution)
+    - [Todo: F Distribution](#todo-f-distribution)
     - [Todo: Binominal Distribution](#todo-binominal-distribution)
   - [Information theory](#information-theory)
     - [Todo: Information Entropy](#todo-information-entropy)
@@ -52,9 +52,9 @@ Distributions and their probability density function (pdf).
 
 ### Chi-square Distribution
 
-### Todo: F Distribution
-
 ### Beta Distribution
+
+### Todo: F Distribution
 
 ### Todo: Binominal Distribution
 
