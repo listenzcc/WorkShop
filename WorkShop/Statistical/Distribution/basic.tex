@@ -1,4 +1,5 @@
-
+% -------------------------------------------------
+% Settings
 \documentclass[a4paper]{article}
 
 \usepackage{amssymb}
@@ -13,13 +14,16 @@
 \usepackage{float}
 
 \title{Basic of Distribution}
-
 \author{listenzcc}
 
 \begin{document}
+% ------------------------------------------------
+% Title page
 
 \maketitle
 
+% --------------------------------------------------
+% Abstract
 \abstract
 A family of \emph{normal} distributions, like
 Normal, Chi-squared and Student's t-distribution.
@@ -33,9 +37,15 @@ Then the distributions are described one by one.
 
 The Appendix provides some necessary proofs.
 
+
+% -----------------------------------------------------
+% Table of contents
+\newpage
 \tableofcontents
 
 \section{Pre-knowledge}
+% -------------------------------------------------------
+% Pre knowledge section
 
 \subsection{Gamma and Beta function}
 
@@ -83,23 +93,29 @@ The \emph{Beta ($B$) function} is a two-factor function, derived from $\Gamma$ f
     \begin{equation*}
         B(\alpha, \beta) = \int_{0}^{1} t^{\alpha-1} (1-t)^{\beta-1} \,\mathrm{d}t
     \end{equation*}
+
     See \ref{The relationship between Gamma and Beta} for proof.
 
 \end{proposition}
 
 \section{Normal distribution}
+% ---------------------------------------------------------
+% Normal distribution section
 
 \subsection{Definition}
+
 It is hard to say normal distribution is what, since almost every thing follows it.
 
 The Probability Distribution Function \emph{(pdf)} of normal distribution is
 \begin{equation}
     p(x) = \frac{1}{\sqrt{2\pi}\delta} \exp({-\frac{(x-\mu)^2}{2\delta^2}}), -\infty < x < \infty
 \end{equation}
+
 the symbolic notion is $p(x) \sim N(\mu, \delta^2)$.
 When $\mu = 0$ and $\delta^2 = 1$, it is called standard normal distribution.
 
 \subsection{Mean and Variance}
+
 The mean and variance of the normal distribution is
 \begin{equation*}
     \begin{aligned}
@@ -110,8 +126,11 @@ The mean and variance of the normal distribution is
 it is easy to proof using Proposition \ref{Gamma function propositions}.
 
 \section{Chi-squared distribution}
+% ----------------------------------------------------------
+% Chi-squared distribution section
 
 \subsection{Definition}
+
 If $Y_i \sim N(0, 1)$, then
 \begin{equation}
     \chi^2 \equiv \sum_{i = 1}^{r} Y_i^2
@@ -135,11 +154,15 @@ The mean and variance of the chi-squared distribution is
 it is easy to proof using Proposition \ref{Gamma function propositions}.
 
 \subsection{Relationship with Normal Distribution}
+
 The Chi-squared distribution is derived from Normal Distribution.
 
 \section{Student's t-distribution}
+% ------------------------------------------------------------
+% Student's t-distribution section
 
 \subsection{Definition}
+
 The probability distribution of a random variable $T$, of the form
 \begin{equation*}
     T = \frac{\bar{x} - m}{s / \sqrt{N}}
@@ -158,11 +181,15 @@ The pdf of Student's t-distribution is
 \end{equation}
 it is easy to proof the pdf is a pdf using \ref{The pdf of Student's t-distribution is a pdf}.
 
+The pdf of Student's t-distribution can be computed using \ref{Compute the pdf of Student's t-distribution}.
+
 \subsection{Relationship with Normal Distribution}
+
 It is easy to see that $\lim_{r \to \infty} t_r(x) \sim N(0, 1)$.
 It demonstrates that when $r$ is large enough, the Student's t-distribution is equalize to Normal Distribution.
 
 \subsection{Mean and Variance}
+
 The mean and variance of the Student's t-distribution is
 \begin{equation*}
     \begin{aligned}
@@ -174,8 +201,11 @@ The mean and variance of the Student's t-distribution is
 \appendix
 
 \section{Appendix}
+% -----------------------------------------------------
+% Appendix
 
 \subsection{The relationship between $\Gamma$ and $B(\alpha, \beta)$}
+
 It is essential to know that
 \begin{equation*}
     \Gamma(m)\Gamma(n) = B(m, n) \Gamma(m+n)
@@ -186,22 +216,28 @@ It is essential to know that
     \begin{equation*}
         \Gamma(m)\Gamma(n) = \int_{0}^{\infty} x^{m-1} e^{-x} dx \int_{0}^{\infty} y^{n-1} e^{-y} dy
     \end{equation*}
+
     Then rewrite it as a double integral
     \begin{equation*}
         \Gamma(m)\Gamma(n) = \int_{0}^{\infty} \int_{0}^{\infty} x^{m-1} y^{n-1} e^{-x-y} dx dy
     \end{equation*}
+
     Applying the substitution $x=vt$ and $y=v(1-t)$, we have
     \begin{equation*}
         \Gamma(m)\Gamma(n) = \int_{0}^{1} t^{m-1} (1-t)^{n-1} dt \int_{0}^{\infty} v^{m+n-1} e^{-v} dv
     \end{equation*}
+
     Using the definitions of $\Gamma$ and Beta functions, we have
     \begin{equation*}
         \Gamma(m)\Gamma(n) = B(m, n) \Gamma(m+n)
     \end{equation*}
+
     Hence proved.
+
 \end{proof}
 
 \subsection{The pdf of Student's t-distribution is a pdf}
+
 The values of $t_r(x)$ is positive and the integral is $1$.
 \begin{equation*}
     \int_{-\infty}^{\infty} t_r(x) \,\mathrm{d}x = 1
@@ -212,6 +248,7 @@ The values of $t_r(x)$ is positive and the integral is $1$.
     \begin{equation*}
         f(x) = (1+\frac{x^2}{r})^{-\frac{r+1}{2}}, -\infty < x < \infty
     \end{equation*}
+
     use a replacement as following
     \begin{equation*}
         x^2 = \frac{y}{1-y}
@@ -228,6 +265,7 @@ The values of $t_r(x)$ is positive and the integral is $1$.
         \sqrt{r} \int_{0}^{1} (1-y)^{\frac{r}{2}-1} y^{\frac{1}{2}-1} \,\mathrm{d}y =
         \sqrt{r} B(\frac{r}{2}, \frac{1}{2})
     \end{equation*}
+
     Finally the normalization factor has to be
     \begin{equation*}
         \frac{\Gamma(\frac{r+1}{2})}{\sqrt{r} \Gamma(\frac{r}{2}) \Gamma(\frac{1}{2})}
@@ -235,5 +273,66 @@ The values of $t_r(x)$ is positive and the integral is $1$.
     which makes the integral of $t_r(x)$ is $1$.
 
 \end{proof}
+
+\subsection{Compute the pdf of Student's t-distribution}
+
+Here, we provide a simple computation of the pdf of the Student's t-distribution.
+\begin{equation*}
+    T=\frac{X}{\sqrt{Y/r}}
+\end{equation*}
+in which $X \sim N(0, 1)$ and $Y \sim \chi^2(r)$, and they are independent.
+Thus, we have
+\begin{equation*}
+    \begin{aligned}
+        p(x) & \propto e^{-x^2/2}               \\
+        p(y) & \propto y^{r/2-1} \cdot e^{-y/2}
+    \end{aligned}
+\end{equation*}
+
+The random variable $t$ follows the equation $t=\frac{x}{\sqrt{y/r}}$.
+Since we want to proof that
+\begin{equation*}
+    p(t) \propto (1+\frac{t^2}{r})^{-\frac{r+1}{2}}
+\end{equation*}
+
+\begin{proof} \label{Compute the pdf of Student's t-distribution}
+    The joint probability of $p(x, y)$ matches
+    \begin{equation*}
+        p(x, y) \propto e^{-x^2/2} \cdot y^{r/2-1} \cdot e^{-y/2}
+    \end{equation*}
+
+    And the divergence of $p(x, y)$ is $p(x, y) dx dy$.
+    We can use the variable replacement of
+    \begin{equation*}
+        \begin{aligned}
+            y             & = \frac{x^2}{t^2} \cdot r \\
+            \frac{dy}{dt} & \propto \frac{x^2}{t^3}
+        \end{aligned}
+    \end{equation*}
+
+    Thus we have the joint probability of $p(x, t)$ matches
+    \begin{equation*}
+        p(x, t) \propto e^{-x^2/2} \cdot (\frac{x^2}{t^2})^{r/2-1} \cdot e^{-\frac{x^2}{2t^2}r} \cdot \frac{x^2}{t^3}
+    \end{equation*}
+
+    The probability of $p(t)$ can be expressed as
+    \begin{equation*}
+        p(t) \propto \int_{x} p(x, t) dx
+    \end{equation*}
+
+    Analysis the expression, we have
+    \begin{equation*}
+        \begin{aligned}
+            p(t) & \propto t^{-r-1} \int_{x} x^{r} \cdot e^{-\frac{1}{2}(1+\frac{r}{t^2})x^2} dx           \\
+            p(t) & \propto t^{-r-1} \cdot (1+\frac{r}{t^2})^\frac{-r-1}{2} \int_{z} z^{r} \cdot e^{z^2} dz \\
+            p(t) & \propto (t^2 + r) ^ {-\frac{r+1}{2}}                                                    \\
+            p(t) & \propto (1+\frac{t^2}{r})^{-\frac{r+1}{2}}
+        \end{aligned}
+    \end{equation*}
+
+    The process uses the integral of $\Gamma$ function is constant, and $r$ is constant.
+\end{proof}
+
+After that, combining with the \ref{The pdf of Student's t-distribution is a pdf}, we should finally have the pdf function.
 
 \end{document}
