@@ -30,18 +30,25 @@ Normal, Chi-squared and Student's t-distribution.
 The Normal Distribution is the \emph{core} conception,
 all others are derived from it.
 
-This article begins with Gamma and Beta function.
-Since they are useful for computing the \emph{moments} the normal distribution family.
-
-Then the distributions are described one by one.
-
-The Appendix provides some necessary proofs.
-
+\begin{itemize}
+    \item This article begins with Gamma and Beta function.
+          Since they are useful for computing the \emph{moments} the normal distribution family.
+    \item Then the distributions are described one by one.
+          \begin{itemize}
+              \item Normal distribution
+              \item Chi-squared distribution
+              \item Student's t-distribution
+          \end{itemize}
+    \item The Appendix provides the necessary proofs.
+\end{itemize}
 
 % -----------------------------------------------------
 % Table of contents
 \newpage
+
 \tableofcontents
+
+\newpage
 
 \section{Pre-knowledge}
 % -------------------------------------------------------
@@ -63,7 +70,7 @@ The \emph{Beta ($B$) function} is a two-factor function, derived from $\Gamma$ f
 
 \subsection{Important equations}
 
-\begin{proposition} \label{Gamma function propositions}
+\begin{proposition} \label{proposition: Gamma function propositions}
     Some very important equations.
 
     The value of $\Gamma(\frac{1}{2})$
@@ -94,9 +101,11 @@ The \emph{Beta ($B$) function} is a two-factor function, derived from $\Gamma$ f
         B(\alpha, \beta) = \int_{0}^{1} t^{\alpha-1} (1-t)^{\beta-1} \,\mathrm{d}t
     \end{equation*}
 
-    See \ref{The relationship between Gamma and Beta} for proof.
+    See Lemma \ref{lemma: The relationship between Gamma and Beta} for proof.
 
 \end{proposition}
+
+\newpage
 
 \section{Normal distribution}
 % ---------------------------------------------------------
@@ -123,7 +132,9 @@ The mean and variance of the normal distribution is
         Variance & \triangleq E(x^2) - E^2(x) = \delta^2
     \end{aligned}
 \end{equation*}
-it is easy to proof using Proposition \ref{Gamma function propositions}.
+it is easy to proof using Proposition \ref{proposition: Gamma function propositions}.
+
+\newpage
 
 \section{Chi-squared distribution}
 % ----------------------------------------------------------
@@ -140,10 +151,18 @@ The symbolic notion is $p_r(x) \sim \chi^2(r)$.
 
 The pdf of Chi-squared distribution is
 \begin{equation}
-    P_r(x) = \frac{x^{r/2-1} e^{-x/2}}{\Gamma(r/2) 2^{r/2}}, 0 < x < \infty
+    p_r(x) = \frac{x^{r/2-1} e^{-x/2}}{\Gamma(r/2) 2^{r/2}}, 0 < x < \infty
 \end{equation}
 
+The proof can be found in Lemma \ref{lemma: Compute the pdf of Chi-squared distribution} and Lemma \ref{lemma: The pdf of Chi-squared distribution is a pdf}.
+
+\subsection{Relationship with Normal Distribution}
+
+The Chi-squared distribution is derived from Normal Distribution.
+The relationship is not direct, but it is essential to Student's t-distribution, which is low-sample version of Normal Distribution.
+
 \subsection{Mean and Variance}
+
 The mean and variance of the chi-squared distribution is
 \begin{equation*}
     \begin{aligned}
@@ -151,11 +170,9 @@ The mean and variance of the chi-squared distribution is
         Variance & \triangleq E(x^2) - E^2(x) = 2r
     \end{aligned}
 \end{equation*}
-it is easy to proof using Proposition \ref{Gamma function propositions}.
+it is easy to proof using Proposition \ref{proposition: Gamma function propositions}.
 
-\subsection{Relationship with Normal Distribution}
-
-The Chi-squared distribution is derived from Normal Distribution.
+\newpage
 
 \section{Student's t-distribution}
 % ------------------------------------------------------------
@@ -179,9 +196,9 @@ The pdf of Student's t-distribution is
 \begin{equation}
     t_r(x) = \frac{\Gamma(\frac{r+1}{2})}{\Gamma(\frac{r}{2}) \sqrt{r\pi}} (1+\frac{x^2}{r})^{-\frac{r+1}{2}}, -\infty < x < \infty
 \end{equation}
-it is easy to proof the pdf is a pdf using \ref{The pdf of Student's t-distribution is a pdf}.
+it is easy to proof the pdf is a pdf Lemma \ref{lemma: The pdf of Student's t-distribution is a pdf}.
 
-The pdf of Student's t-distribution can be computed using \ref{Compute the pdf of Student's t-distribution}.
+The pdf of Student's t-distribution can be computed using Lemma \ref{lemma: Compute the pdf of Student's t-distribution}.
 
 \subsection{Relationship with Normal Distribution}
 
@@ -198,6 +215,8 @@ The mean and variance of the Student's t-distribution is
     \end{aligned}
 \end{equation*}
 
+\newpage
+
 \appendix
 
 \section{Appendix}
@@ -206,12 +225,15 @@ The mean and variance of the Student's t-distribution is
 
 \subsection{The relationship between $\Gamma$ and $B(\alpha, \beta)$}
 
-It is essential to know that
-\begin{equation*}
-    \Gamma(m)\Gamma(n) = B(m, n) \Gamma(m+n)
-\end{equation*}
+\begin{lemma} \label{lemma: The relationship between Gamma and Beta}
+    The relationship between $\Gamma$ and $B(\alpha, \beta)$
+    \begin{equation*}
+        \Gamma(m)\Gamma(n) = B(m, n) \Gamma(m+n)
+    \end{equation*}
 
-\begin{proof} \label{The relationship between Gamma and Beta}
+\end{lemma}
+
+\begin{proof}
     One can write
     \begin{equation*}
         \Gamma(m)\Gamma(n) = \int_{0}^{\infty} x^{m-1} e^{-x} dx \int_{0}^{\infty} y^{n-1} e^{-y} dy
@@ -236,45 +258,80 @@ It is essential to know that
 
 \end{proof}
 
-\subsection{The pdf of Student's t-distribution is a pdf}
+\subsection{The pdf of Chi-squared distribution}
 
-The values of $t_r(x)$ is positive and the integral is $1$.
-\begin{equation*}
-    \int_{-\infty}^{\infty} t_r(x) \,\mathrm{d}x = 1
-\end{equation*}
+\begin{lemma} \label{lemma: Compute the pdf of Chi-squared distribution}
+    To get the pdf of a Chi-squared distribution, we have to prove that
+    \begin{equation*}
+        p_{n}(x) \propto x^{n/2-1} \cdot e^{-x/2}
+    \end{equation*}
+    in which, $x = \sum_{i=1}^{n} y_i^2$ and $y_i \sim N(0, 1)$.
+    Each $y_i$ are independent.
 
-\begin{proof} \label{The pdf of Student's t-distribution is a pdf}
-    Consider the variable part of Student's t-distribution
-    \begin{equation*}
-        f(x) = (1+\frac{x^2}{r})^{-\frac{r+1}{2}}, -\infty < x < \infty
-    \end{equation*}
+\end{lemma}
 
-    use a replacement as following
+\begin{proof}
+    The joint probability of $\{y_1, y_2, \dots, y_n\}$ is
     \begin{equation*}
-        x^2 = \frac{y}{1-y}
-    \end{equation*}
-    it is easy to see that $\lim_{y \to 0} x = 0$ and $\lim_{y \to 1} x = \infty$.
-    Additionally, the $x^2$ is even function.
-    Thus we can write the integral of $f(x)$
-    \begin{equation*}
-        \int_{-\infty}^{\infty} f(x) \,\mathrm{d}x =
-        2 \sqrt{r} \int_{0}^{1} (\frac{1}{1-y})^{-\frac{r+1}{2}} \,\mathrm{d} (\frac{y}{1-y})^\frac{1}{2}
-    \end{equation*}
-    it is not hard to find out that the integral may end up with
-    \begin{equation*}
-        \sqrt{r} \int_{0}^{1} (1-y)^{\frac{r}{2}-1} y^{\frac{1}{2}-1} \,\mathrm{d}y =
-        \sqrt{r} B(\frac{r}{2}, \frac{1}{2})
+        p_{joint} = exp(\sum_{i=1}^{n}-y_i^2/2)
     \end{equation*}
 
-    Finally the normalization factor has to be
+    Thus, the cumulative sum of $p_n(x)$ can be computed using surface integral
     \begin{equation*}
-        \frac{\Gamma(\frac{r+1}{2})}{\sqrt{r} \Gamma(\frac{r}{2}) \Gamma(\frac{1}{2})}
+        \begin{aligned}
+            P_n(r<\sqrt{x}) & \propto \int_{S} p_{joint} ds  \\
+            P_n(r<\sqrt{x}) & \propto \int_{S} e^{-r^2/2} ds
+        \end{aligned}
     \end{equation*}
-    which makes the integral of $t_r(x)$ is $1$.
+    in which, $S$ refers the volume of a sphere with radius of $x$.
+
+    Transfer the integral into sphere coordinates, we have
+    \begin{equation*}
+        P_n(r<\sqrt{x}) \propto \int_{r=0}^{\sqrt{x}} e^{-r^2/2} r^{(n-1)} dr
+    \end{equation*}
+
+    Derivate to $x$, we have
+    \begin{equation*}
+        \begin{aligned}
+            \frac{\partial}{\partial{x}} {P_n(r<\sqrt{x})} & \propto e^{-r^2/2} r^{(n-1)} x^{-1/2} \\
+            \frac{\partial}{\partial{x}} {P_n(r<\sqrt{x})} & \propto x^{n/2-1} \cdot e^{-x/2}
+        \end{aligned}
+    \end{equation*}
+    because of the Newton's integral rule, the second step is based on the replacement of $r = \sqrt{x}$.
+
+    Hence proved.
 
 \end{proof}
 
-\subsection{Compute the pdf of Student's t-distribution}
+\begin{lemma} \label{lemma: The pdf of Chi-squared distribution is a pdf}
+    Next, we have to prove that the integral of $p_n(x)$ with $p_n(x) \sim \chi^2(n)$ is
+    \begin{equation*}
+        \int_0^\infty p_n(x) dx = \Gamma(n/2) \cdot 2^{r/2}
+    \end{equation*}
+
+\end{lemma}
+
+\begin{proof}
+    Use the definition of $\Gamma$ function
+    \begin{equation*}
+        \Gamma(n) = \int_0^\infty x^{n-1} e^{-x} dx
+    \end{equation*}
+
+    Use variable replacement of $z = 2x$, we have
+    \begin{equation*}
+        \Gamma(n) = 2^{-n} \int_0^\infty z^{n-1} e^{-z/2} dz
+    \end{equation*}
+
+    Then, use substitution of $n = n/2$, we have
+    \begin{equation*}
+        \Gamma(n/2) \cdot 2^{n/2} = \int_0^\infty z^{n/2-1} e^{-z/2} dz
+    \end{equation*}
+
+    Hence proved.
+
+\end{proof}
+
+\subsection{The pdf of Student's t-distribution}
 
 Here, we provide a simple computation of the pdf of the Student's t-distribution.
 \begin{equation*}
@@ -290,12 +347,16 @@ Thus, we have
 \end{equation*}
 
 The random variable $t$ follows the equation $t=\frac{x}{\sqrt{y/r}}$.
-Since we want to proof that
-\begin{equation*}
-    p(t) \propto (1+\frac{t^2}{r})^{-\frac{r+1}{2}}
-\end{equation*}
 
-\begin{proof} \label{Compute the pdf of Student's t-distribution}
+\begin{lemma} \label{lemma: Compute the pdf of Student's t-distribution}
+    Since then we want to prove that
+    \begin{equation*}
+        p(t) \propto (1+\frac{t^2}{r})^{-\frac{r+1}{2}}
+    \end{equation*}
+
+\end{lemma}
+
+\begin{proof}
     The joint probability of $p(x, y)$ matches
     \begin{equation*}
         p(x, y) \propto e^{-x^2/2} \cdot y^{r/2-1} \cdot e^{-y/2}
@@ -333,6 +394,46 @@ Since we want to proof that
     The process uses the integral of $\Gamma$ function is constant, and $r$ is constant.
 \end{proof}
 
-After that, combining with the \ref{The pdf of Student's t-distribution is a pdf}, we should finally have the pdf function.
+After that, combining with the following, we should finally have the pdf function.
+
+\begin{lemma} \label{lemma: The pdf of Student's t-distribution is a pdf}
+    The values of $t_r(x)$ is positive and the integral is $1$.
+    \begin{equation*}
+        \int_{-\infty}^{\infty} t_r(x) \,\mathrm{d}x = 1
+    \end{equation*}
+
+\end{lemma}
+
+\begin{proof}
+    Consider the variable part of Student's t-distribution
+    \begin{equation*}
+        f(x) = (1+\frac{x^2}{r})^{-\frac{r+1}{2}}, -\infty < x < \infty
+    \end{equation*}
+
+    use a replacement as following
+    \begin{equation*}
+        x^2 = \frac{y}{1-y}
+    \end{equation*}
+    it is easy to see that $\lim_{y \to 0} x = 0$ and $\lim_{y \to 1} x = \infty$.
+    Additionally, the $x^2$ is even function.
+    Thus we can write the integral of $f(x)$
+    \begin{equation*}
+        \int_{-\infty}^{\infty} f(x) \,\mathrm{d}x =
+        2 \sqrt{r} \int_{0}^{1} (\frac{1}{1-y})^{-\frac{r+1}{2}} \,\mathrm{d} (\frac{y}{1-y})^\frac{1}{2}
+    \end{equation*}
+    it is not hard to find out that the integral may end up with
+    \begin{equation*}
+        \sqrt{r} \int_{0}^{1} (1-y)^{\frac{r}{2}-1} y^{\frac{1}{2}-1} \,\mathrm{d}y =
+        \sqrt{r} B(\frac{r}{2}, \frac{1}{2})
+    \end{equation*}
+
+    Finally the normalization factor has to be
+    \begin{equation*}
+        \frac{\Gamma(\frac{r+1}{2})}{\sqrt{r} \Gamma(\frac{r}{2}) \Gamma(\frac{1}{2})}
+    \end{equation*}
+    which makes the integral of $t_r(x)$ is $1$.
+
+\end{proof}
+
 
 \end{document}
