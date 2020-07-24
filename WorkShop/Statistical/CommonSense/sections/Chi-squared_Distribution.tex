@@ -1,0 +1,35 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Definition}
+
+If $Y_i \sim \mathcal{N}(0, 1)$, then
+\begin{equation}
+    \chi^2 \equiv \sum_{i = 1}^{r} Y_i^2
+\end{equation}
+is distributed as Chi-squared \emph{$\chi^2$} distribution with $r$ degrees of freedom.
+The symbolic notion is $p_r(x) \sim \chi^2(r)$.
+
+The pdf of Chi-squared distribution is
+\begin{equation}
+    p_r(x) = \frac{x^{r/2-1} e^{-x/2}}{\Gamma(r/2) 2^{r/2}}, 0 < x < \infty
+\end{equation}
+
+The proof can be found in Lemma \ref{lemma: Compute the pdf of Chi-squared distribution} and Lemma \ref{lemma: The pdf of Chi-squared distribution is a pdf}.
+
+\subsection{Relationship with Normal Distribution}
+
+The Chi-squared distribution is derived from Normal Distribution.
+The relationship is not direct, but it is essential to Student's t-distribution, which is low-sample version of Normal Distribution.
+
+\subsection{Mean and Variance}
+
+The mean and variance of the chi-squared distribution is
+\begin{align*}
+    Mean     & \triangleq E(x) = r             \\
+    Variance & \triangleq E(x^2) - E^2(x) = 2r
+\end{align*}
+it is easy to proof using Proposition \ref{proposition: Gamma function propositions}.
+
+\end{document}

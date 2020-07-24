@@ -1,0 +1,26 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Definition}
+
+It is hard to say normal distribution is what, since almost every thing follows it.
+
+The Probability Distribution Function \emph{(pdf)} of normal distribution is
+\begin{equation}
+    p(x) = \frac{1}{\sqrt{2\pi}\delta} \exp({-\frac{(x-\mu)^2}{2\delta^2}}), -\infty < x < \infty
+\end{equation}
+
+the symbolic notion is $p(x) \sim \mathcal{N}(\mu, \delta^2)$.
+When $\mu = 0$ and $\delta^2 = 1$, it is called standard normal distribution.
+
+\subsection{Mean and Variance}
+
+The mean and variance of the normal distribution is
+\begin{align*}
+    Mean     & \triangleq E(x) = \mu                 \\
+    Variance & \triangleq E(x^2) - E^2(x) = \delta^2
+\end{align*}
+it is easy to proof using Proposition \ref{proposition: Gamma function propositions}.
+
+\end{document}

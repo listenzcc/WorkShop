@@ -1,0 +1,54 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Gamma and Beta function}
+
+An infinity integral is called as \emph{Gamma ($\Gamma$) function}
+
+\begin{equation}
+    \Gamma(z) = \int_{0}^{\infty} x^{z-1} e^{-x} \,\mathrm{d}x
+\end{equation}
+
+The \emph{Beta ($B$) function} is a two-factor function, derived from $\Gamma$ function
+
+\begin{equation}
+    B(\alpha, \beta) = \frac{\Gamma(\alpha) \cdot \Gamma(\beta)}{\Gamma(\alpha + \beta)}
+\end{equation}
+
+\subsection{Important equations}
+
+\begin{proposition} \label{proposition: Gamma function propositions}
+    Some very important equations.
+
+    The value of $\Gamma(\frac{1}{2})$
+    \begin{equation}
+        \Gamma(\frac{1}{2}) = \sqrt {\pi}
+    \end{equation}
+
+    The recursive of $\Gamma(n)$, the general situation,
+    \begin{align}
+        \Gamma(1+z) & = z \Gamma(z)   \\
+        \Gamma(1-z) & = -z \Gamma(-z)
+    \end{align}
+
+    The integer situation,
+    \begin{equation}
+        \Gamma(n) = (n-1)! \quad \forall n \in \mathcal{N}^+
+    \end{equation}
+
+    The relationship between $\Gamma$ and $e^{-x^{2}}$
+    \begin{equation}
+        \Gamma(z) = 2 \int_{0}^{\infty} x^{2z-1} e^{-x^{2}} \,\mathrm{d}x
+    \end{equation}
+
+    The relationship between $\Gamma$ and $B$ Function
+    \begin{equation}
+        B(\alpha, \beta) = \int_{0}^{1} t^{\alpha-1} (1-t)^{\beta-1} \,\mathrm{d}t
+    \end{equation}
+
+    See Lemma \ref{lemma: The relationship between Gamma and Beta} for proof.
+
+\end{proposition}
+
+\end{document}

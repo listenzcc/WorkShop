@@ -1,0 +1,207 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{The relationship between $\Gamma$ and $B(\alpha, \beta)$}
+
+\begin{lemma} \label{lemma: The relationship between Gamma and Beta}
+    The relationship between $\Gamma$ and $B(\alpha, \beta)$
+    \begin{equation}
+        \Gamma(m)\Gamma(n) = B(m, n) \Gamma(m+n)
+    \end{equation}
+
+\end{lemma}
+
+\begin{proof}
+    One can write
+    \begin{equation*}
+        \Gamma(m)\Gamma(n) = \int_{0}^{\infty} x^{m-1} e^{-x} dx \int_{0}^{\infty} y^{n-1} e^{-y} dy
+    \end{equation*}
+
+    Then rewrite it as a double integral
+    \begin{equation*}
+        \Gamma(m)\Gamma(n) = \int_{0}^{\infty} \int_{0}^{\infty} x^{m-1} y^{n-1} e^{-x-y} dx dy
+    \end{equation*}
+
+    Applying the substitution $x=vt$ and $y=v(1-t)$, we have
+    \begin{equation*}
+        \Gamma(m)\Gamma(n) = \int_{0}^{1} t^{m-1} (1-t)^{n-1} dt \int_{0}^{\infty} v^{m+n-1} e^{-v} dv
+    \end{equation*}
+
+    Using the definitions of $\Gamma$ and Beta functions, we have
+    \begin{equation*}
+        \Gamma(m)\Gamma(n) = B(m, n) \Gamma(m+n)
+    \end{equation*}
+
+    Hence proved.
+
+\end{proof}
+
+\subsection{The pdf of Chi-squared distribution}
+
+\begin{lemma} \label{lemma: Compute the pdf of Chi-squared distribution}
+    To get the pdf of a Chi-squared distribution, we have to prove that
+    \begin{equation*}
+        p_{n}(x) \propto x^{n/2-1} \cdot e^{-x/2}
+    \end{equation*}
+    in which, $x = \sum_{i=1}^{n} y_i^2$ and $y_i \sim \mathcal{N}(0, 1)$.
+    Each $y_i$ are independent.
+
+\end{lemma}
+
+\begin{proof}
+    The joint probability of $\{y_1, y_2, \dots, y_n\}$ is
+    \begin{equation*}
+        p_{joint} = exp(\sum_{i=1}^{n}-y_i^2/2)
+    \end{equation*}
+
+    Thus, the cumulative sum of $p_n(x)$ can be computed using surface integral
+    \begin{align*}
+        P_n(r<\sqrt{x}) & \propto \int_{S} p_{joint} ds  \\
+        P_n(r<\sqrt{x}) & \propto \int_{S} e^{-r^2/2} ds
+    \end{align*}
+    in which, $S$ refers the volume of a sphere with radius of $x$.
+
+    Transfer the integral into sphere coordinates, we have
+    \begin{equation*}
+        P_n(r<\sqrt{x}) \propto \int_{r=0}^{\sqrt{x}} e^{-r^2/2} r^{(n-1)} dr
+    \end{equation*}
+
+    Derivate to $x$, we have
+    \begin{align*}
+        \frac{\partial}{\partial{x}} {P_n(r<\sqrt{x})} & \propto e^{-r^2/2} r^{(n-1)} x^{-1/2} \\
+        \frac{\partial}{\partial{x}} {P_n(r<\sqrt{x})} & \propto x^{n/2-1} \cdot e^{-x/2}
+    \end{align*}
+    because of the Newton's integral rule, the second step is based on the replacement of $r = \sqrt{x}$.
+
+    Hence proved.
+
+\end{proof}
+
+\begin{lemma} \label{lemma: The pdf of Chi-squared distribution is a pdf}
+    Next, we have to prove that the integral of $p_n(x)$ with $p_n(x) \sim \chi^2(n)$ is
+    \begin{equation*}
+        \int_0^\infty p_n(x) dx = \Gamma(n/2) \cdot 2^{r/2}
+    \end{equation*}
+
+\end{lemma}
+
+\begin{proof}
+    Use the definition of $\Gamma$ function
+    \begin{equation*}
+        \Gamma(n) = \int_0^\infty x^{n-1} e^{-x} dx
+    \end{equation*}
+
+    Use variable replacement of $z = 2x$, we have
+    \begin{equation*}
+        \Gamma(n) = 2^{-n} \int_0^\infty z^{n-1} e^{-z/2} dz
+    \end{equation*}
+
+    Then, use substitution of $n = n/2$, we have
+    \begin{equation*}
+        \Gamma(n/2) \cdot 2^{n/2} = \int_0^\infty z^{n/2-1} e^{-z/2} dz
+    \end{equation*}
+
+    Hence proved.
+
+\end{proof}
+
+\subsection{The pdf of Student's t-distribution}
+
+Here, we provide a simple computation of the pdf of the Student's t-distribution.
+\begin{equation*}
+    T=\frac{X}{\sqrt{Y/r}}
+\end{equation*}
+in which $X \sim \mathcal{N}(0, 1)$ and $Y \sim \chi^2(r)$, and they are independent.
+Thus, we have
+\begin{align*}
+    p(x) & \propto e^{-x^2/2}               \\
+    p(y) & \propto y^{r/2-1} \cdot e^{-y/2}
+\end{align*}
+
+The random variable $t$ follows the equation $t=\frac{x}{\sqrt{y/r}}$.
+
+\begin{lemma} \label{lemma: Compute the pdf of Student's t-distribution}
+    Since then we want to prove that
+    \begin{equation}
+        p(t) \propto (1+\frac{t^2}{r})^{-\frac{r+1}{2}}
+    \end{equation}
+
+\end{lemma}
+
+\begin{proof}
+    The joint probability of $p(x, y)$ matches
+    \begin{equation*}
+        p(x, y) \propto e^{-x^2/2} \cdot y^{r/2-1} \cdot e^{-y/2}
+    \end{equation*}
+
+    And the divergence of $p(x, y)$ is $p(x, y) dx dy$.
+    We can use the variable replacement of
+    \begin{align*}
+        y             & = \frac{x^2}{t^2} \cdot r \\
+        \frac{dy}{dt} & \propto \frac{x^2}{t^3}
+    \end{align*}
+
+    Thus we have the joint probability of $p(x, t)$ matches
+    \begin{equation*}
+        p(x, t) \propto e^{-x^2/2} \cdot (\frac{x^2}{t^2})^{r/2-1} \cdot e^{-\frac{x^2}{2t^2}r} \cdot \frac{x^2}{t^3}
+    \end{equation*}
+
+    The probability of $p(t)$ can be expressed as
+    \begin{equation*}
+        p(t) \propto \int_{x} p(x, t) dx
+    \end{equation*}
+
+    Analysis the expression, we have
+    \begin{align*}
+        p(t) & \propto t^{-r-1} \int_{x} x^{r} \cdot e^{-\frac{1}{2}(1+\frac{r}{t^2})x^2} dx           \\
+        p(t) & \propto t^{-r-1} \cdot (1+\frac{r}{t^2})^\frac{-r-1}{2} \int_{z} z^{r} \cdot e^{z^2} dz \\
+        p(t) & \propto (t^2 + r) ^ {-\frac{r+1}{2}}                                                    \\
+        p(t) & \propto (1+\frac{t^2}{r})^{-\frac{r+1}{2}}
+    \end{align*}
+
+    The process uses the integral of $\Gamma$ function is constant, and $r$ is constant.
+\end{proof}
+
+After that, combining with the following, we should finally have the pdf function.
+
+\begin{lemma} \label{lemma: The pdf of Student's t-distribution is a pdf}
+    The values of $t_r(x)$ is positive and the integral is $1$.
+    \begin{equation*}
+        \int_{-\infty}^{\infty} t_r(x) \,\mathrm{d}x = 1
+    \end{equation*}
+
+\end{lemma}
+
+\begin{proof}
+    Consider the variable part of Student's t-distribution
+    \begin{equation*}
+        f(x) = (1+\frac{x^2}{r})^{-\frac{r+1}{2}}, -\infty < x < \infty
+    \end{equation*}
+
+    use a replacement as following
+    \begin{equation*}
+        x^2 = \frac{y}{1-y}
+    \end{equation*}
+    it is easy to see that $\lim_{y \to 0} x = 0$ and $\lim_{y \to 1} x = \infty$.
+    Additionally, the $x^2$ is even function.
+    Thus we can write the integral of $f(x)$
+    \begin{equation*}
+        \int_{-\infty}^{\infty} f(x) \,\mathrm{d}x =
+        2 \sqrt{r} \int_{0}^{1} (\frac{1}{1-y})^{-\frac{r+1}{2}} \,\mathrm{d} (\frac{y}{1-y})^\frac{1}{2}
+    \end{equation*}
+    it is not hard to find out that the integral may end up with
+    \begin{equation*}
+        \sqrt{r} \int_{0}^{1} (1-y)^{\frac{r}{2}-1} y^{\frac{1}{2}-1} \,\mathrm{d}y =
+        \sqrt{r} B(\frac{r}{2}, \frac{1}{2})
+    \end{equation*}
+
+    Finally the normalization factor has to be
+    \begin{equation*}
+        \frac{\Gamma(\frac{r+1}{2})}{\sqrt{r} \Gamma(\frac{r}{2}) \Gamma(\frac{1}{2})}
+    \end{equation*}
+    which makes the integral of $t_r(x)$ is $1$.
+
+\end{proof}
+
+\end{document}

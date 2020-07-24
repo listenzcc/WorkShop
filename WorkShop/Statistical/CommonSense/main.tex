@@ -1,0 +1,74 @@
+% -------------------------------------------------
+% Settings
+\documentclass[a4paper]{article}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\usepackage{amsmath}
+\usepackage{graphicx}
+% \usepackage{float}
+\usepackage{subfiles}
+
+\title{Basic of Distribution}
+\author{listenzcc}
+
+% --------------------------------------------------
+% Contents
+\begin{document}
+
+% Title page
+\maketitle
+
+% Abstract page
+\abstract
+A family of \emph{normal} distributions, like Normal, Chi-squared and Student's t-distribution.
+The Normal Distribution is the \emph{core} conception, all others are derived from it.
+
+\begin{itemize}
+    \item This article begins with Gamma and Beta function.
+          Since they are useful for computing the \emph{moments} the normal distribution family.
+    \item Then the distributions are described one by one.
+          \begin{itemize}
+              \item Normal distribution
+              \item Chi-squared distribution
+              \item Student's t-distribution
+          \end{itemize}
+    \item The Appendix provides the necessary proofs.
+\end{itemize}
+
+\newpage
+
+% Contents table page
+\tableofcontents
+\newpage
+
+% Main body
+\section{Prepare Knowledge}
+\subfile{sections/Prepare_Knowledge}
+\newpage
+
+\section{Normal Distribution}
+\subfile{sections/Normal_Distribution}
+\newpage
+
+\section{Chi-squared Distribution}
+\subfile{sections/Chi-squared_Distribution}
+\newpage
+
+\section{Student's t Distribution}
+\subfile{sections/T_Distribution}
+\newpage
+
+\section{Examples}
+\subfile{sections/Examples}
+\newpage
+
+% Appendix
+\appendix
+
+\section{Appendix}
+\subfile{appendix/Appendix}
+
+\end{document}

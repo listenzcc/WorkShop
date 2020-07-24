@@ -1,0 +1,40 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Definition}
+
+The probability distribution of a random variable $T$, of the form
+\begin{equation}
+    T = \frac{\bar{x} - m}{s / \sqrt{N}}
+\end{equation}
+where $\bar{x}$ is the sample mean value of all $N$ samples, $m$ is the population mean value and $s$ is the population standard deviation.
+
+Or, in a more formal one
+\begin{equation}
+    T = \frac{X}{\sqrt{Y/r}}
+\end{equation}
+where $X \sim \mathcal{N}(0, 1)$ and $Y \sim \chi_r^2$.
+
+The pdf of Student's t-distribution is
+\begin{equation}
+    t_r(x) = \frac{\Gamma(\frac{r+1}{2})}{\Gamma(\frac{r}{2}) \sqrt{r\pi}} (1+\frac{x^2}{r})^{-\frac{r+1}{2}}, -\infty < x < \infty
+\end{equation}
+it is easy to proof the pdf is a pdf Lemma \ref{lemma: The pdf of Student's t-distribution is a pdf}.
+
+The pdf of Student's t-distribution can be computed using Lemma \ref{lemma: Compute the pdf of Student's t-distribution}.
+
+\subsection{Relationship with Normal Distribution}
+
+It is easy to see that $\lim_{r \to \infty} t_r(x) \sim \mathcal{N}(0, 1)$.
+It demonstrates that when $r$ is large enough, the Student's t-distribution is equalize to Normal Distribution.
+
+\subsection{Mean and Variance}
+
+The mean and variance of the Student's t-distribution is
+\begin{align*}
+    Mean     & \triangleq E(x) = 0                        \\
+    Variance & \triangleq E(x^2) - E^2(x) = \frac{r}{r-2}
+\end{align*}
+
+\end{document}
