@@ -78,10 +78,10 @@ The \emph{Beta ($B$) function} is a two-factor function, derived from $\Gamma$ f
 
     The recursive of $\Gamma(n)$, the general situation,
     \begin{equation*}
-        \begin{aligned}
+        \begin{align}
             \Gamma(1+z) & = z \Gamma(z)   \\
             \Gamma(1-z) & = -z \Gamma(-z)
-        \end{aligned}
+        \end{align}
     \end{equation*}
 
     The integer situation,
@@ -125,10 +125,10 @@ When $\mu = 0$ and $\delta^2 = 1$, it is called standard normal distribution.
 
 The mean and variance of the normal distribution is
 \begin{equation*}
-    \begin{aligned}
+    \begin{align}
         Mean     & \triangleq E(x) = \mu                 \\
         Variance & \triangleq E(x^2) - E^2(x) = \delta^2
-    \end{aligned}
+    \end{align}
 \end{equation*}
 it is easy to proof using Proposition \ref{proposition: Gamma function propositions}.
 
@@ -163,10 +163,10 @@ The relationship is not direct, but it is essential to Student's t-distribution,
 
 The mean and variance of the chi-squared distribution is
 \begin{equation*}
-    \begin{aligned}
+    \begin{align}
         Mean     & \triangleq E(x) = r             \\
         Variance & \triangleq E(x^2) - E^2(x) = 2r
-    \end{aligned}
+    \end{align}
 \end{equation*}
 it is easy to proof using Proposition \ref{proposition: Gamma function propositions}.
 
@@ -207,10 +207,10 @@ It demonstrates that when $r$ is large enough, the Student's t-distribution is e
 
 The mean and variance of the Student's t-distribution is
 \begin{equation*}
-    \begin{aligned}
+    \begin{align}
         Mean     & \triangleq E(x) = 0                        \\
         Variance & \triangleq E(x^2) - E^2(x) = \frac{r}{r-2}
-    \end{aligned}
+    \end{align}
 \end{equation*}
 
 \newpage
@@ -276,10 +276,10 @@ The mean and variance of the Student's t-distribution is
 
     Thus, the cumulative sum of $p_n(x)$ can be computed using surface integral
     \begin{equation*}
-        \begin{aligned}
+        \begin{align}
             P_n(r<\sqrt{x}) & \propto \int_{S} p_{joint} ds  \\
             P_n(r<\sqrt{x}) & \propto \int_{S} e^{-r^2/2} ds
-        \end{aligned}
+        \end{align}
     \end{equation*}
     in which, $S$ refers the volume of a sphere with radius of $x$.
 
@@ -290,10 +290,10 @@ The mean and variance of the Student's t-distribution is
 
     Derivate to $x$, we have
     \begin{equation*}
-        \begin{aligned}
+        \begin{align}
             \frac{\partial}{\partial{x}} {P_n(r<\sqrt{x})} & \propto e^{-r^2/2} r^{(n-1)} x^{-1/2} \\
             \frac{\partial}{\partial{x}} {P_n(r<\sqrt{x})} & \propto x^{n/2-1} \cdot e^{-x/2}
-        \end{aligned}
+        \end{align}
     \end{equation*}
     because of the Newton's integral rule, the second step is based on the replacement of $r = \sqrt{x}$.
 
@@ -338,10 +338,10 @@ Here, we provide a simple computation of the pdf of the Student's t-distribution
 in which $X \sim N(0, 1)$ and $Y \sim \chi^2(r)$, and they are independent.
 Thus, we have
 \begin{equation*}
-    \begin{aligned}
+    \begin{align}
         p(x) & \propto e^{-x^2/2}               \\
         p(y) & \propto y^{r/2-1} \cdot e^{-y/2}
-    \end{aligned}
+    \end{align}
 \end{equation*}
 
 The random variable $t$ follows the equation $t=\frac{x}{\sqrt{y/r}}$.
@@ -363,10 +363,10 @@ The random variable $t$ follows the equation $t=\frac{x}{\sqrt{y/r}}$.
     And the divergence of $p(x, y)$ is $p(x, y) dx dy$.
     We can use the variable replacement of
     \begin{equation*}
-        \begin{aligned}
+        \begin{align}
             y             & = \frac{x^2}{t^2} \cdot r \\
             \frac{dy}{dt} & \propto \frac{x^2}{t^3}
-        \end{aligned}
+        \end{align}
     \end{equation*}
 
     Thus we have the joint probability of $p(x, t)$ matches
@@ -381,12 +381,12 @@ The random variable $t$ follows the equation $t=\frac{x}{\sqrt{y/r}}$.
 
     Analysis the expression, we have
     \begin{equation*}
-        \begin{aligned}
+        \begin{align}
             p(t) & \propto t^{-r-1} \int_{x} x^{r} \cdot e^{-\frac{1}{2}(1+\frac{r}{t^2})x^2} dx           \\
             p(t) & \propto t^{-r-1} \cdot (1+\frac{r}{t^2})^\frac{-r-1}{2} \int_{z} z^{r} \cdot e^{z^2} dz \\
             p(t) & \propto (t^2 + r) ^ {-\frac{r+1}{2}}                                                    \\
             p(t) & \propto (1+\frac{t^2}{r})^{-\frac{r+1}{2}}
-        \end{aligned}
+        \end{align}
     \end{equation*}
 
     The process uses the integral of $\Gamma$ function is constant, and $r$ is constant.
