@@ -1,0 +1,120 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Determine the valid sample size}
+
+People trend to believe the results of surveys, but are they true?
+The sample size may be a key to answer the question.
+
+% --------------------------------------------------------------------------------------
+\bigbreak
+\textbf{Ground Truth}
+
+Let's start with a simple model of 'How do people support a candidate?'.
+The supporting rate is a random variable that fits
+\begin{equation*}
+    R_{support} \sim \mathcal{N}(\mu, \sigma^2)
+\end{equation*}
+where $\mu$ and $\sigma^2$ are unavailable.
+
+% --------------------------------------------------------------------------------------
+\bigbreak
+\textbf{Population Survey}
+The supporting rate is so important that they want to know it using \emph{LARGE} surveys.
+It is like asking every body.
+The number of supporters follows binominal distribution
+\begin{equation*}
+    p(n) = (N, n) \cdot r^n \cdot (1-r)^(N-n)
+\end{equation*}
+where $r$ refers the ground truth of supporting rate, $N$ is the population and $n$ is the number of supporters.
+
+Then, the sample expectation and sample variance of $n$ is direct
+\begin{align}
+    E(n) & = N \cdot r             \\
+    D(n) & = N \cdot r \cdot (1-r)
+\end{align}
+
+Divide by $N$, we can get the \emph{unbiased estimation} \footnote{The unbiased estimation refers the sample mean of the random variable equals to the expectation.} of $r$ as $\hat{r}$ and its sample variance
+\begin{align}
+    \hat{r}    & = \frac{n}{N}             \\
+    D(\hat{r}) & = \frac{r \cdot (1-r)}{N}
+\end{align}
+since $E(\hat{r})=r$.
+
+It turns out that the variance is related to $r$ value.
+There are things to remember
+\begin{itemize}
+    \item The variance is symmetric to $0.5$.
+    \item The closer $r$ to $0.5$, the larger is the variance.
+    \item The variance decreases when the sample size increases.
+\end{itemize}
+
+% --------------------------------------------------------------------------------------
+\bigbreak
+\textbf{Sample Survey}
+
+However, in practice, the survey of all population is impossible.
+Usually, survey in a small group (the number is $M < N$) is available.
+It will turn out a similar situation
+\begin{align}
+    \hat{r}    & = \frac{m}{M}             \\
+    D(\hat{r}) & = \frac{r \cdot (1-r)}{M}
+\end{align}
+
+\bigbreak
+\textbf{Estimation}
+
+Use above analysis, we can say that the estimation of $\mu$ value of $R_support$ is easy to compute.
+But the real question is \emph{How we can trust the estimation?}.
+Especially in the case of the survey is restricted in \emph{part} of the population.
+
+We analysis the question on both side.
+
+\begin{itemize}
+    \item \textbf{In ground-truth end}, we have the equation that
+          \begin{equation*}
+              \frac{\sigma^2}{N} = \frac{s^2}{N-1}
+          \end{equation*}
+          where $s^2$ refers the sample variance with population of $N$.
+    \item \textbf{In survey end}, we have the variance that
+          \begin{align*}
+              s_{N}^2 & = \frac{r(1-r)}{N} \\
+              s_{M}^2 & = \frac{r(1-r)}{M}
+          \end{align*}
+          where $s_N^2$ and $s_M^2$ refer the variance of $N$ and $M$ population.
+
+    \item \textbf{Jointly}, since the variance of $M$ is derived from the intrinsic variance $\sigma^2$, and population of $N$.
+          It meets
+          \begin{equation*}
+              s_M^2 = s_N^2 + s^2
+          \end{equation*}
+
+\end{itemize}
+
+Use the joint equation, the $M$ follows
+\begin{equation*}
+    M = N \cdot \frac{\frac{r(1-r)}{\sigma^2}}{(N-1)+\frac{r(1-r)}{\sigma^2}}
+\end{equation*}
+
+Under certain error edge $e$, use the equation between $e$ and $\sigma^2$
+\begin{equation*}
+    e^2 = z^2 \cdot \sigma^2
+\end{equation*}
+where $z$ is the \emph{Percentile} of normal distribution according to $e$.
+
+Thus, we have the relationship between $e$ and $M$.
+\begin{equation*}
+    \hat{M} = N \cdot \frac{z^2\frac{r(1-r)}{e^2}}{(N-1)+z^2\frac{r(1-r)}{e^2}}
+\end{equation*}
+
+The solution is the minimization of \emph{Sample size} to achieve certain degree of confidence defined by $e$.
+
+\end{document}
+
+
+
+
+
+
+
