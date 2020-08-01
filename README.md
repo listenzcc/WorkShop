@@ -20,7 +20,8 @@
     - [The selection between multi-processing and multi-threading](#the-selection-between-multi-processing-and-multi-threading)
     - [Pie Graph](#pie-graph)
     - [Todo: Python Bisect Module](#todo-python-bisect-module)
-  - [Software trick](#software-trick)
+  - [Machine learning](#machine-learning)
+    - [Spectral clustering](#spectral-clustering)
 
 My workshop for everything.
 The necessary proof will be provided.
@@ -105,6 +106,8 @@ The data conjunction is presented as the combination between angle and radium.
 
 An useful python module for **Bisection** algorithms.
 
-## Software trick
+## Machine learning
 
-Useful software tricks.
+### Spectral clustering
+
+An powerful clustering algorithm.

@@ -1,0 +1,36 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+\abstract
+In a graph, known as $G(V, E)$, an important problem is how to clustering the vertex \emph{automatically}.
+That means that the clustering method should be \emph{unsupervised}.
+The spectral clustering method is a powerful solution.
+
+\section {Laplacian matrix and graph}
+The weight matrix is defined as
+\begin{equation*}
+    W = [w_{ij}]
+\end{equation*}
+in which, $w_{ij}=w_{ji}$ is the measurement weight of the edge, refers the distance between $V_i$ and $V_j$.
+
+The degree matrix is diagonal matrix
+\begin{equation*}
+    d_{ii} = \sum_{j=1}^{N}w_{ij}
+\end{equation*}
+where $N$ is the number of vertex.
+
+The subtraction is \emph{Laplacian} matrix $L$
+\begin{equation}
+    \label{equation: Laplacian matrix}
+    L = D - W
+\end{equation}
+
+For any $N$ dimensional vector $f \in R^N$
+\begin{equation}
+    \label{equation: Laplacian matrix times vector}
+    f^T L f = \frac{1}{2} \sum_{i, j=1}^{N} w_{ij}(f_i - f_j)^2
+\end{equation}
+
+\end{document}
