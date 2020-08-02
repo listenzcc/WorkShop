@@ -33,4 +33,37 @@ For any $N$ dimensional vector $f \in R^N$
     f^T L f = \frac{1}{2} \sum_{i, j=1}^{N} w_{ij}(f_i - f_j)^2
 \end{equation}
 
+\section{Ratio Cut}
+For graph $G(V, E)$, separate vertex into $k$ sets $A_1, A_2, \cdots , A_k$, the union is $V$.
+For sets of $A$ and $B$, the weight between them is
+\begin{equation*}
+    W(A, B) = \sum_{i \in A, j \in B} w_{ij}
+\end{equation*}
+
+For a cut protocol $cut$, the weight is defined as
+\begin{equation}
+    \label{equation:Loss of cut}
+    Cut(A_i, A_j, \cdots, A_k) = \frac{1}{2} \sum_{i=1}^{k} W(A_i, \bar{A_i})
+\end{equation}
+where $\bar{A_i}$ refers the supplementary set.
+
+Minimization of Eq.\ref{equation:Loss of cut} refers the $cut$ that use \emph{Smallest} cut.
+However, to get the \emph{Best} cut, it has to minimize the $RatioCut$
+\begin{equation}
+    \label{equation:Loss of ratio cut}
+    Ratio(A_i, A_j, \cdots, A_k) = \frac{1}{2} \sum_{i=1}^{k} \frac{W(A_i, \bar{A_i})}{|A_i|}
+\end{equation}
+where the denominator is the sum of weights in $A_i$.
+
+\subsection{Computation}
+Direct computing $RatioCut$ is NP-hard, use clustering vectors ${h_1, h_2, \cdots, h_k}$ as alternative method
+\begin{equation*}
+    h_{ij} =
+    \left\{
+    \begin{array}{lr}
+        0                      & , v_i \notin A_j \\
+        \frac{1}{\sqrt{|A_j|}} & , v_i \in A_j
+    \end{array}
+    \right.
+\end{equation*}
 \end{document}
