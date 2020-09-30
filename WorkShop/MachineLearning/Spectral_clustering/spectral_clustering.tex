@@ -12,7 +12,7 @@ In a graph, known as $G(V, E)$, an important problem is how to clustering the ve
 That means that the clustering method should be \emph{unsupervised}.
 The spectral clustering method is a powerful solution.
 
-\section {Laplacian matrix and graph}
+\section{Laplacian matrix and graph}
 The weight matrix is defined as
 \begin{equation*}
     W = [w_{ij}]
@@ -31,7 +31,7 @@ The subtraction is \emph{Laplacian} matrix $L$
     L = D - W
 \end{equation}
 
-For any $N$ dimensional vector $f \in R^N$
+For any $N$ dimensional vector $f \in R^{N \times 1}$
 \begin{equation}
     \label{equation: Laplacian matrix times vector}
     f^T L f = \frac{1}{2} \sum_{i, j=1}^{N} w_{ij}(f_i - f_j)^2
