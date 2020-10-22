@@ -7,6 +7,12 @@ import plotly.graph_objects as go
 import os
 import pandas as pd
 
+try:
+    display()
+except NameError:
+    def display(*args, **kwargs):
+        print(*args)
+
 # Table of nouns,
 # used for detection and convertion from plural to single mode
 nouns_table = dict(
@@ -52,7 +58,7 @@ class CfgObject(object):
 
     def select(self, column, value):
         # Select rows by [value] in [column]
-        return self.df.query(f'{column}=="{value}"')
+        return self.df.query(f'{column}=="{value}"').copy()
 
     def load_file(self):
         # Read every line of the file,
