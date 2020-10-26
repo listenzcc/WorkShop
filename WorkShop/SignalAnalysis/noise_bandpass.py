@@ -1,5 +1,5 @@
-# File: noise_demo.py
-# Aim: A demo of noise generation
+# File: noise_bandpass.py
+# Aim: A demo of noise bandpass
 
 # %%
 import numpy as np
@@ -71,23 +71,15 @@ def plot_signal(signal):
 
 
 # %% ----------------------------------------------------
-# Generate bandpass random time series
-# Random phase
-phase = parameter['freq'] * 2 * PI * T
-phase_noise = phase + np.random.random(length)
+noise = np.random.randn(length)
+white_fig = plot_signal(noise)
+white_fig.savefig('WhiteNoise.png')
 
-# Random amplitude
-noise = np.random.random(length) * 0.1
-center = np.random.randint(length-width)
-noise[center:center+width] = 1
-
-# Constant amplitude
-amplitude = parameter['energy'] * np.ones(length)
-
-# Generate signal
-signal_noise = noise * amplitude * np.sin(phase_noise)
-
-noise_fig = plot_signal(signal_noise)
-noise_fig.savefig('noise.png')
+# %%
+band = [e * 2 / sample_rate for e in [5, 15]]
+b, a = signal_tool.butter(8, band, 'bandpass')
+bandpass = signal_tool.filtfilt(b, a, noise)
+band_fig = plot_signal(bandpass)
+band_fig.savefig('BanPassNoise.png')
 
 # %%
