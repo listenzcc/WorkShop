@@ -1,0 +1,122 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\subsection{Random Variables}
+A variable is \emph{random} means it is not fixed.
+It turns out that one can obtain different values every time.
+The reason behind can be systemic or arbitrary.
+The aim of statistical analysis is to uncover the reason, however it usually matters little during the calculation.
+But the analysis can be valid only if the \emph{random variable follows certain rules} instead of being totally unreasonable.
+
+\subsection{Statistics and Distribution}
+To understand the rules, the obtained values should be calculated carefully to formulate \emph{new meaningful values}.
+The new values are called \emph{statistics}.
+The statistics are asserted to be following some certain \emph{distribution}.
+The distribution refers to the rule that controls the uncertainty of the random variable.
+A classic distribution contains two parts:
+\begin{itemize}
+    \item Values $x$: The possible values of the statistic
+    \item Probabilities $p(x)$: The probabilities of the values
+\end{itemize}
+It is also intrinsic that the sum of the probabilities should be equal to ONE, no more no less.
+\begin{equation*}
+    \int p(x) = 1, \forall p(x) \in (0, 1)
+\end{equation*}
+The function of $p(x)$ is called \emph{probability distribution function (PDF)}.
+
+\subsection{Statistics}
+There are several commonly used statistics like: \emph{expectation}, \emph{variance}, and \textit{etc}.
+\begin{itemize}
+    \item Expectation: The expectation value of every good obtain, expressed as the first-order zero moment
+    \item Variance: The variance of the statistics, expressed as the second-order center moment
+\end{itemize}
+\begin{equation}
+    \label{Definition: Expectation and variance definition}
+    \begin{split}
+        Expectation = \mathcal{E} & = \int x \cdot p(x) dx                 \\
+        Variance = \mathcal{V}    & = \int (x-\mathcal{E})^2 \cdot p(x) dx
+    \end{split}
+\end{equation}
+\begin{lemma}
+    \label{Lemma: Relationship between expectation and variance}
+    For simplicity, the relationship between expectation and variance can be found following
+    \begin{equation*}
+        \mathcal{V} = \mathcal{E}(x^2) - \mathcal{E}^2(x)
+    \end{equation*}
+    \begin{proof}
+        Compute the square in \eqref{Definition: Expectation and variance definition},
+        we have
+        \begin{align*}
+            \mathcal{V} & = \int (x^2 - 2 x \mathcal{E} + \mathcal{E}^2) p(x) dx \\
+                        & = \mathcal{E}(x^2) - \mathcal{E}^2(x)
+        \end{align*}
+        where $\mathcal{E}$ refers $\mathcal{E}(x)$.
+        And, the equation uses the condition that the $\mathcal{E}$ is constant in the integral.
+    \end{proof}
+\end{lemma}
+
+\subsubsection{Independency of statistics}
+The distribution of two random variables can be computed using \emph{joint probability} and \emph{conditional probability}.
+\begin{equation*}
+    p(x, y) = p(x) \cdot p(y|x) = p(y) \cdot p(x|y)
+\end{equation*}
+
+The simplest situation is the variables of $x$ and $y$ are independent with each other.
+\begin{lemma}
+    \label{Lemma: Confusing second-order moment of independent variables}
+    If $x$ and $y$ are independent, we have $\mathcal{E}(x, y) = \mathcal{E}(x) \cdot \mathcal{E}(y)$.
+    \begin{proof}
+        The independency guarantees
+        \begin{align*}
+            p(x|y)  & = p(x)            \\
+            p(y|x)  & = p(y)            \\
+            p(x, y) & = p(x) \cdot p(y)
+        \end{align*}
+        Using the definition of expectation in \eqref{Definition: Expectation and variance definition},
+        we have $\mathcal{E}(x, y) = \mathcal{E}(x) \cdot \mathcal{E}(y)$.
+    \end{proof}
+\end{lemma}
+
+\subsection{Distributions}
+There are several commonly used distributions like: \emph{Normal distribution}, \emph{Binomial distribution}, \emph{Chi-squared distribution}, \emph{Student's t-distribution} and \textit{etc}.
+
+\bigbreak
+The PDF of Normal distribution is
+\begin{equation}
+    \label{Definition: PDF of Normal distribution}
+    p(x)=
+    \frac{1}{\sqrt{2\pi}\sigma} \exp{\frac{(x-\mu)^2}{2\sigma^2}},
+    x \in (-\infty, \infty)
+\end{equation}
+where $\mathcal{E}=\mu$ and $\mathcal{V}=\sigma^2$.
+The normal distribution is so important that we express it as $p(x) \sim \mathcal{N}(\mu, \sigma^2)$.
+
+\bigbreak
+The PDF of Binomial distribution is
+\begin{equation}
+    \label{Definition: PDF of Binomial distribution}
+    p_N(n)=
+    (N, n) \cdot r^n \cdot (1-r)^{N-n},
+    n \in [0, N]
+\end{equation}
+where $\mathcal{E}=N \cdot r$ and $\mathcal{V}=N \cdot r \cdot (1-r)$.
+
+\bigbreak
+The PDF of Chi-squared distribution is
+\begin{equation}
+    \label{Definition: PDF of Chi-squared distribution}
+    p_r(x)=
+    \frac{x^{r/2-1} e^{-x/2}}{\Gamma(r/2) 2^{r/2}},
+    x \in (0, \infty)
+\end{equation}
+where $\mathcal{E}=r$ and $\mathcal{V}=2r$.
+
+\subsection{Parameter Estimation}
+One goal of statistical analysis is to \emph{determine the parameters of the distribution}.
+There are several methods of the estimation:
+\begin{itemize}
+    \item MLE: Maximum Likelihood Estimation
+    \item MAP: Maximum A posteriori Probability estimate
+\end{itemize}
+
+\end{document}
