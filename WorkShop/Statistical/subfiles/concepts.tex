@@ -56,15 +56,22 @@ There are several commonly used statistics like: \emph{expectation}, \emph{varia
 \end{lemma}
 
 \subsubsection{Independency of statistics}
-The distribution of two random variables can be computed using \emph{joint probability} and \emph{conditional probability}.
+The distribution of \emph{two random variables} can be computed using \emph{joint probability} and \emph{conditional probability}.
 \begin{equation*}
     p(x, y) = p(x) \cdot p(y|x) = p(y) \cdot p(x|y)
 \end{equation*}
+And the second-order moment of the two random variables is
+\begin{equation*}
+    \mathcal{E}(x, y) = \int x \cdot y \cdot p(x, y) dx dy
+\end{equation*}
+
+\bigbreak
+\textbf{Independent Situation}
 
 The simplest situation is the variables of $x$ and $y$ are independent with each other.
 \begin{lemma}
     \label{Lemma: Confusing second-order moment of independent variables}
-    If $x$ and $y$ are independent, we have $\mathcal{E}(x, y) = \mathcal{E}(x) \cdot \mathcal{E}(y)$.
+    If $x$ and $y$ are independent, then $\mathcal{E}(x, y) = \mathcal{E}(x) \cdot \mathcal{E}(y)$.
     \begin{proof}
         The independency guarantees
         \begin{align*}
@@ -77,11 +84,21 @@ The simplest situation is the variables of $x$ and $y$ are independent with each
     \end{proof}
 \end{lemma}
 
+\bigbreak
+\textbf{Non-independent Situation}
+
+If the independent situation is not matched, then the covariance is not zero.
+\begin{equation*}
+    Cov(X, Y) =
+    \mathcal{E}(X, Y) - \mathcal{E}(X)\mathcal{E}(Y)
+    \neq 0
+\end{equation*}
+
 \subsection{Distributions}
 There are several commonly used distributions like: \emph{Normal distribution}, \emph{Binomial distribution}, \emph{Chi-squared distribution}, \emph{Student's t-distribution} and \textit{etc}.
 
 \bigbreak
-The PDF of Normal distribution is
+\textbf{The PDF of Normal distribution is}
 \begin{equation}
     \label{Definition: PDF of Normal distribution}
     p(x)=
@@ -92,7 +109,7 @@ where $\mathcal{E}=\mu$ and $\mathcal{V}=\sigma^2$.
 The normal distribution is so important that we express it as $p(x) \sim \mathcal{N}(\mu, \sigma^2)$.
 
 \bigbreak
-The PDF of Binomial distribution is
+\textbf{The PDF of Binomial distribution is}
 \begin{equation}
     \label{Definition: PDF of Binomial distribution}
     p_N(n)=
@@ -102,7 +119,7 @@ The PDF of Binomial distribution is
 where $\mathcal{E}=N \cdot r$ and $\mathcal{V}=N \cdot r \cdot (1-r)$.
 
 \bigbreak
-The PDF of Chi-squared distribution is
+\textbf{The PDF of Chi-squared distribution is}
 \begin{equation}
     \label{Definition: PDF of Chi-squared distribution}
     p_r(x)=
@@ -110,6 +127,12 @@ The PDF of Chi-squared distribution is
     x \in (0, \infty)
 \end{equation}
 where $\mathcal{E}=r$ and $\mathcal{V}=2r$.
+
+The statistic follows Chi-squared distribution refers
+\begin{equation*}
+    p_r(x) \sim \mathcal{X}^2(r) = \sum_{i=1}^{r} Y_i^2
+\end{equation*}
+where $Y_i \sim \mathcal{N}(0, 1)$, and $Y_i$s are independent with each other.
 
 \subsection{Parameter Estimation}
 One goal of statistical analysis is to \emph{determine the parameters of the distribution}.
