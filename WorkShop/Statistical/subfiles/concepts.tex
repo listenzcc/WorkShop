@@ -55,7 +55,6 @@ There are several commonly used statistics like: \emph{expectation}, \emph{varia
     \end{proof}
 \end{lemma}
 
-\subsubsection{Independency of statistics}
 The distribution of \emph{two random variables} can be computed using \emph{joint probability} and \emph{conditional probability}.
 \begin{equation*}
     p(x, y) = p(x) \cdot p(y|x) = p(y) \cdot p(x|y)
@@ -65,8 +64,7 @@ And the second-order moment of the two random variables is
     \mathcal{E}(X, Y) = \iint x \cdot y \cdot p(x, y) dx dy
 \end{equation*}
 
-\bigbreak
-\textbf{Independent Situation}
+\subsubsection{Independent Situation}
 
 The simplest situation is the variables of $x$ and $y$ are independent with each other.
 \begin{lemma}
@@ -89,8 +87,7 @@ The simplest situation is the variables of $x$ and $y$ are independent with each
     \end{proof}
 \end{lemma}
 
-\bigbreak
-\textbf{Non-independent Situation}
+\subsubsection{Un-independent Situation}
 
 If the independent situation is not matched, then the covariance is not zero.
 \begin{equation*}
@@ -114,11 +111,14 @@ Using the definition of variance in \eqref{Definition: Expectation and variance 
 \end{align*}
 where $X=Y$.
 
-\bigbreak
-\textbf{Variance of mean value}
+\subsubsection{Variance of mean value}
 
-Without the satisfying situation of $X=Y$, it can be complicated.
-However, in a common case, the $Cov(\cdot, \cdot)$ can be used to express the variance of \emph{mean value}
+Without the satisfying independence condition, it can be complicated.
+Commonly, the covariance matrix $\mathcal{C} \in \mathbb{R}^{ij}$ can be used to express the relationship between variables
+\begin{equation*}
+    \mathcal{C}_{ij} = Cov(X_i, X_j)
+\end{equation*}
+where $i$, $j$ are the indices of the two variables.
 \begin{lemma}
     \label{Lemma: Variance of mean value}
     The variance of mean value equals to the mean of all covariance terms
@@ -158,14 +158,17 @@ However, in a common case, the $Cov(\cdot, \cdot)$ can be used to express the va
         By pairing them one-by-one, we come to
         \begin{align*}
             n^2 \cdot Var(\overline{X}) & = \sum_{i, j} \mathcal{E}(X_i X_j) - \mathcal{E}(X_i)\mathcal{E}(X_j) \\
-            Var(\overline{X})           & = \frac{1}{n} \sum_{i, j} Cov(X_i, X_j)
+            Var(\overline{X})           & = \frac{1}{n^2} \sum_{i, j} Cov(X_i, X_j)
         \end{align*}
 
         Hence proved.
     \end{proof}
 
-
 \end{lemma}
+
+Based on the lemma \ref{Lemma: Variance of mean value}, the variance of mean value can be calculated based on the covariance between each two values.
+Under \emph{independent situation}, since the covariance between each two variables equals to zero, the variance is the mean of diagonal elements of the covariance matrix.
+Under \emph{un-independent situation}, the variance is the mean of all the elements of the covariance matrix.
 
 \subsection{Distributions}
 There are several commonly used distributions like: \emph{Normal distribution}, \emph{Binomial distribution}, \emph{Chi-squared distribution}, \emph{Student's t-distribution} and \textit{etc}.
