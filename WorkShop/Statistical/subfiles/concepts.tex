@@ -1,6 +1,9 @@
 \documentclass[../main.tex]{subfiles}
 
 \begin{document}
+\section{Concepts}
+The section will list basic concepts of \emph{random variables} and \emph{statistical analysis}.
+
 \subsection{Random Variables}
 A variable is \emph{random} means it is not fixed.
 It turns out that one can obtain different values every time.
@@ -20,15 +23,15 @@ A classic distribution contains two parts:
 \end{itemize}
 It is also intrinsic that the sum of the probabilities should be equal to ONE, no more no less.
 \begin{equation*}
-    \int p(x) = 1, \forall p(x) \in (0, 1)
+    \int p(x) = 1, \{ \forall x | p(x) \in (0, 1) \}
 \end{equation*}
 The function of $p(x)$ is called \emph{probability distribution function (PDF)}.
 
 \subsection{Statistics}
 There are several commonly used statistics like: \emph{expectation}, \emph{variance}, and \textit{etc}.
 \begin{itemize}
-    \item Expectation: The expectation value of every good obtain, expressed as the first-order zero moment
-    \item Variance: The variance of the statistics, expressed as the second-order center moment
+    \item Expectation: The expectation value of every good obtain, expressed as the first-order origin moment
+    \item Variance: The variance of the statistics, expressed as the second-order central moment
 \end{itemize}
 \begin{equation}
     \label{Definition: Expectation and variance definition}
@@ -39,22 +42,13 @@ There are several commonly used statistics like: \emph{expectation}, \emph{varia
 \end{equation}
 \begin{lemma}
     \label{Lemma: Relationship between expectation and variance}
-    For simplicity, the relationship between expectation and variance can be found following
+    For simplicity, the relationship between expectation and variance can be found as following
     \begin{equation*}
         \mathcal{V} = \mathcal{E}(X^2) - \mathcal{E}^2(X)
     \end{equation*}
-    \begin{proof}
-        Compute the square in \eqref{Definition: Expectation and variance definition},
-        we have
-        \begin{align*}
-            \mathcal{V} & = \int (x^2 - 2 x \mathcal{E} + \mathcal{E}^2) p(x) dx \\
-                        & = \mathcal{E}(X^2) - \mathcal{E}^2(X)
-        \end{align*}
-        where $\mathcal{E}$ refers $\mathcal{E}(X)$.
-        And, the equation uses the condition that the $\mathcal{E}$ is constant in the integral.
-    \end{proof}
 \end{lemma}
 
+Other than one single statistic.
 The distribution of \emph{two random variables} can be computed using \emph{joint probability} and \emph{conditional probability}.
 \begin{equation*}
     p(x, y) = p(x) \cdot p(y|x) = p(y) \cdot p(x|y)
@@ -68,23 +62,13 @@ And the second-order moment of the two random variables is
 
 The simplest situation is the variables of $x$ and $y$ are independent with each other.
 \begin{lemma}
-    \label{Lemma: Mixed second-order moment of independent variables}
-    If $x$ and $y$ are independent, then
+    \label{Lemma: Second-order mixing moment of independent variables}
+    If $X$ and $Y$ are independent, then
     \begin{equation*}
         Cov(X, Y) =
         \mathcal{E}(X, Y) - \mathcal{E}(X) \mathcal{E}(Y) = 0,
         \forall X \perp Y
     \end{equation*}
-    \begin{proof}
-        The independency guarantees
-        \begin{align*}
-            p(x|y)  & = p(x)            \\
-            p(y|x)  & = p(y)            \\
-            p(x, y) & = p(x) \cdot p(y)
-        \end{align*}
-        Using the definition of expectation in \eqref{Definition: Expectation and variance definition},
-        we have $\mathcal{E}(X, Y) = \mathcal{E}(X) \cdot \mathcal{E}(Y)$.
-    \end{proof}
 \end{lemma}
 
 \subsubsection{Un-independent Situation}
@@ -128,42 +112,6 @@ where $i$, $j$ are the indices of the two variables.
         i, j \in 1, 2, \dots, n
     \end{equation*}
     no matter the relationship between the statistics of $X_1, X_2, \dots, X_n$.
-
-    \begin{proof}
-        The mean value of $n$ statistics can be expressed as
-        \begin{equation*}
-            \overline{X} = \frac{1}{n} \sum_{i} X_i,
-            i \in 1, 2, \dots, n
-        \end{equation*}
-
-        Based on the definition, the variance can be expressed as
-        \begin{align*}
-            Var(\overline{X}) & =  \int_{X_1, X_2, \dots, X_n} {\overline{x}}^2 p(x_1, x_2, \dots, x_n) dx_1 x_2 \dots x_n \\
-                              & - (\int_{X_1, X_2, \dots, X_n} \overline{x} p(x_1, x_2, \dots, x_n) dx_1 x_2 \dots x_n)^2  \\
-                              & , i, j \in 1, 2, \dots, n
-        \end{align*}
-
-        Use the property of full probability rules, we have
-        \begin{align*}
-            \int_{X_k, \dots} f(x_k) \cdot p(x_k, \dots) dx_k \dots                    & = \int_{X_k} f(x_k) \cdot p(x_k) dx_k                    \\
-            \int_{X_i, X_j, \dots} f(x_i, x_j) \cdot p(x_i, x_j, \dots) dx_i x_j \dots & = \int_{X_i, X_j} f(x_i, x_j) \cdot p(x_i, x_j) dx_i x_j
-        \end{align*}
-
-        Thus the variance of the mean value can be formulated as
-        \begin{align*}
-            n^2 \cdot Var(\overline{X}) & = \sum_i \int x_i^2 p(x_i) dx_i + \sum_{i \neq j} \int x_i x_j p(x_i, x_j) dx_i x_j \\
-                                        & - (\sum_i \int x_i p(x_i) dx_i)^2
-        \end{align*}
-        since the positive and negative terms are both of $n^2$ terms.
-        By pairing them one-by-one, we come to
-        \begin{align*}
-            n^2 \cdot Var(\overline{X}) & = \sum_{i, j} \mathcal{E}(X_i X_j) - \mathcal{E}(X_i)\mathcal{E}(X_j) \\
-            Var(\overline{X})           & = \frac{1}{n^2} \sum_{i, j} Cov(X_i, X_j)
-        \end{align*}
-
-        Hence proved.
-    \end{proof}
-
 \end{lemma}
 
 Based on the lemma \ref{Lemma: Variance of mean value}, the variance of mean value can be calculated based on the covariance between each two values.
@@ -173,6 +121,7 @@ Under \emph{un-independent situation}, the variance is the mean of all the eleme
 \subsection{Distributions}
 There are several commonly used distributions like: \emph{Normal distribution}, \emph{Binomial distribution}, \emph{Chi-squared distribution}, \emph{Student's t-distribution} and \textit{etc}.
 
+\subsubsection{Common Distributions}
 \bigbreak
 \textbf{The PDF of Normal distribution is}
 \begin{equation}
@@ -209,6 +158,36 @@ The statistic follows Chi-squared distribution refers
     p_r(x) \sim \mathcal{X}^2(r) = \sum_{i=1}^{r} Y_i^2
 \end{equation*}
 where $Y_i \sim \mathcal{N}(0, 1)$, and $Y_i$s are independent with each other.
+
+\subsubsection{Gamma and Related Functions}
+\textbf{Gamma function}
+The function of generalized integral is defined as $\Gamma$ function,
+\begin{equation}
+    \label{Definition: Gamma function}
+    \Gamma(z) = \int_{0}^{\infty} t^{z-1} e^{-t} dt
+\end{equation}
+
+There are several useful properties,
+\begin{equation}
+    \label{Property: Gamma function}
+    \begin{split}
+        \Gamma(0) & = 1 \\
+        \Gamma(1/2) & = \sqrt{\pi} \\
+        \Gamma(z) & = z \cdot \Gamma(z-1) \\
+        \Gamma(n) & = n!, n \in {1, 2, 3, \dots} \\
+        \Gamma(z) & = 2 \cdot \int_{0}^{\infty} t^{2z-1} e^{-t^2} dt
+    \end{split}
+\end{equation}
+
+The $\Gamma$ function can be used to calculate the integral functional of distributions.
+
+\textbf{Beta Function}
+The $\Gamma$ function is also useful in compute binominal-like integral functions.
+The Beta function is defined as
+\begin{equation}
+    \label{Definition: Beta Function}
+    B(\alpha, \beta) = \frac{\Gamma(\alpha) \cdot \Gamma(\beta)}{\Gamma(\alpha + \beta)}
+\end{equation}
 
 \subsection{Parameter Estimation}
 One goal of statistical analysis is to \emph{determine the parameters of the distribution}.
