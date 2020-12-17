@@ -1,0 +1,47 @@
+\documentclass[../concepts.tex]{subfiles}
+
+\begin{document}
+\subsubsection{Explain of Lemma\ref{Lemma: Second-order mixing moment of independent variables}}
+\textbf{Second-order mixing moment of independent variables}
+% ---------------------------------------
+%    Original contents
+\begin{quote}
+    If $X$ and $Y$ are independent, then
+    \begin{equation*}
+        Cov(X, Y) =
+        \mathcal{E}(X, Y) - \mathcal{E}(X) \mathcal{E}(Y) = 0,
+        \forall X \perp Y
+    \end{equation*}
+\end{quote}
+% ---------------------------------------
+
+% ---------------------------------------
+%    Your word goes here
+
+If $X$ and $Y$ are independent, then
+\begin{equation*}
+    Cov(X, Y) =
+    \mathcal{E}(X, Y) - \mathcal{E}(X) \mathcal{E}(Y) = 0,
+    \forall X \perp Y
+\end{equation*}
+
+
+Prove that, if the statistics of $X$ and $Y$ are independent, then
+\begin{equation*}
+    Cov(X, Y) =
+    \mathcal{E}(X, Y) - \mathcal{E}(X) \mathcal{E}(Y) = 0,
+    \forall X \perp Y
+\end{equation*}
+
+\begin{proof}
+    The independency guarantees
+    \begin{align*}
+        p(x|y)  & = p(x)            \\
+        p(y|x)  & = p(y)            \\
+        p(x, y) & = p(x) \cdot p(y)
+    \end{align*}
+    Using the definition of expectation in \eqref{Definition: Expectation and variance definition},
+    we have $\mathcal{E}(X, Y) = \mathcal{E}(X) \cdot \mathcal{E}(Y)$.
+\end{proof}
+% ---------------------------------------
+\end{document}

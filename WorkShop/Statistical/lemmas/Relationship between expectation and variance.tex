@@ -1,0 +1,41 @@
+\documentclass[../concepts.tex]{subfiles}
+
+\begin{document}
+\subsubsection{Explain of Lemma\ref{Lemma: Relationship between expectation and variance}}
+\textbf{Relationship between expectation and variance}
+% ---------------------------------------
+%    Original contents
+\begin{quote}
+    For simplicity, the relationship between expectation and variance can be found as following
+    \begin{equation*}
+        \mathcal{V} = \mathcal{E}(X^2) - \mathcal{E}^2(X)
+    \end{equation*}
+\end{quote}
+% ---------------------------------------
+
+% ---------------------------------------
+%    Your word goes here
+
+For simplicity, the relationship between expectation and variance can be found as following
+\begin{equation*}
+    \mathcal{V} = \mathcal{E}(X^2) - \mathcal{E}^2(X)
+\end{equation*}
+
+
+Prove that, the relationship between expectation and variance can be found as following
+\begin{equation*}
+    \mathcal{V} = \mathcal{E}(X^2) - \mathcal{E}^2(X)
+\end{equation*}
+
+\begin{proof}
+    Compute the square in \eqref{Definition: Expectation and variance definition},
+    we have
+    \begin{align*}
+        \mathcal{V} & = \int (x^2 - 2 x \mathcal{E} + \mathcal{E}^2) p(x) dx \\
+                    & = \mathcal{E}(X^2) - \mathcal{E}^2(X)
+    \end{align*}
+    where $\mathcal{E}$ refers $\mathcal{E}(X)$.
+    And, the equation uses the condition that the $\mathcal{E}$ is constant in the integral.
+\end{proof}
+% ---------------------------------------
+\end{document}

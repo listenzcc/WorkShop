@@ -1,0 +1,209 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{Concepts}
+The section will list basic concepts of \emph{random variables} and \emph{statistical analysis}.
+
+\subsection{Random Variables}
+A variable is \emph{random} means it is not fixed.
+It turns out that one can obtain different values every time.
+The reason behind can be systemic or arbitrary.
+The aim of statistical analysis is to uncover the reason, however it usually matters little during the calculation.
+But the analysis can be valid only if the \emph{random variable follows certain rules} instead of being totally unreasonable.
+
+\subsection{Statistics and Distribution}
+To understand the rules, the obtained values should be calculated carefully to formulate \emph{new meaningful values}.
+The new values are called \emph{statistics}.
+The statistics are asserted to be following some certain \emph{distribution}.
+The distribution refers to the rule that controls the uncertainty of the random variable.
+A classic distribution contains two parts:
+\begin{itemize}
+    \item Values $x$: The possible values of the statistic
+    \item Probabilities $p(x)$: The probabilities of the values
+\end{itemize}
+It is also intrinsic that the sum of the probabilities should be equal to ONE, no more no less.
+\begin{equation*}
+    \int p(x) = 1, \{ \forall x | p(x) \in (0, 1) \}
+\end{equation*}
+The function of $p(x)$ is called \emph{probability distribution function (PDF)}.
+
+\subsection{Statistics}
+There are several commonly used statistics like: \emph{expectation}, \emph{variance}, and \textit{etc}.
+\begin{itemize}
+    \item Expectation: The expectation value of every good obtain, expressed as the first-order origin moment
+    \item Variance: The variance of the statistics, expressed as the second-order central moment
+\end{itemize}
+\begin{equation}
+    \label{Definition: Expectation and variance definition}
+    \begin{split}
+        Expectation = \mathcal{E} & = \int x \cdot p(x) dx                 \\
+        Variance = \mathcal{V}    & = \int (x-\mathcal{E})^2 \cdot p(x) dx
+    \end{split}
+\end{equation}
+\begin{lemma}
+    \label{Lemma: Relationship between expectation and variance}
+    For simplicity, the relationship between expectation and variance can be found as following
+    \begin{equation*}
+        \mathcal{V} = \mathcal{E}(X^2) - \mathcal{E}^2(X)
+    \end{equation*}
+\end{lemma}
+
+Other than one single statistic.
+The distribution of \emph{two random variables} can be computed using \emph{joint probability} and \emph{conditional probability}.
+\begin{equation*}
+    p(x, y) = p(x) \cdot p(y|x) = p(y) \cdot p(x|y)
+\end{equation*}
+And the second-order moment of the two random variables is
+\begin{equation*}
+    \mathcal{E}(X, Y) = \iint x \cdot y \cdot p(x, y) dx dy
+\end{equation*}
+
+\subsubsection{Independent Situation}
+
+The simplest situation is the variables of $x$ and $y$ are independent with each other.
+\begin{lemma}
+    \label{Lemma: Second-order mixing moment of independent variables}
+    If $X$ and $Y$ are independent, then
+    \begin{equation*}
+        Cov(X, Y) =
+        \mathcal{E}(X, Y) - \mathcal{E}(X) \mathcal{E}(Y) = 0,
+        \forall X \perp Y
+    \end{equation*}
+\end{lemma}
+
+\subsubsection{Un-independent Situation}
+
+If the independent situation is not matched, then the covariance is not zero.
+\begin{equation*}
+    Cov(X, Y) =
+    \mathcal{E}(X, Y) - \mathcal{E}(X)\mathcal{E}(Y)
+    \neq 0
+\end{equation*}
+
+Moreover, in an extreme situation of $X=Y$, the covariance equals to the variance.
+The second-order moment can be expressed as
+\begin{align*}
+    \mathcal{E}(X, Y) & = \iint x \cdot x \cdot p(x) \cdot dx dx \\
+    \mathcal{E}(X, Y) & = \mathcal{E}(X^2)
+\end{align*}
+where we use the fact of $p(x, y) = p(x)$ since we have $X=Y$ here.
+Using the definition of variance in \eqref{Definition: Expectation and variance definition}, we have
+\begin{align*}
+    Cov(X, Y) & = \mathcal{E}(X, X) - \mathcal{E}^2(X) \\
+    Cov(X, Y) & = \mathcal{E}(X^2) - \mathcal{E}^2(X)  \\
+    Cov(X, Y) & = \mathcal{V}
+\end{align*}
+where $X=Y$.
+
+\subsubsection{Variance of mean value}
+
+Without the satisfying independence condition, it can be complicated.
+Commonly, the covariance matrix $\mathcal{C} \in \mathbb{R}^{ij}$ can be used to express the relationship between variables
+\begin{equation*}
+    \mathcal{C}_{ij} = Cov(X_i, X_j)
+\end{equation*}
+where $i$, $j$ are the indices of the two variables.
+\begin{lemma}
+    \label{Lemma: Variance of mean value}
+    The variance of mean value equals to the mean of all covariance terms
+    \begin{equation*}
+        \mathcal{V}(\overline{X}) =
+        \frac{1}{n^2} \sum_{i, j} Cov(X_i, X_j),
+        i, j \in 1, 2, \dots, n
+    \end{equation*}
+    no matter the relationship between the statistics of $X_1, X_2, \dots, X_n$.
+\end{lemma}
+
+Based on the lemma \ref{Lemma: Variance of mean value}, the variance of mean value can be calculated based on the covariance between each two values.
+Under \emph{independent situation}, since the covariance between each two variables equals to zero, the variance is the mean of diagonal elements of the covariance matrix.
+Under \emph{un-independent situation}, the variance is the mean of all the elements of the covariance matrix.
+
+\subsection{Distributions}
+There are several commonly used distributions like: \emph{Normal distribution}, \emph{Binomial distribution}, \emph{Chi-squared distribution}, \emph{Student's t-distribution} and \textit{etc}.
+
+\subsubsection{Common Distributions}
+\bigbreak
+\textbf{The PDF of Normal distribution is}
+\begin{equation}
+    \label{Definition: PDF of Normal distribution}
+    p(x)=
+    \frac{1}{\sqrt{2\pi}\sigma} \exp{\frac{(x-\mu)^2}{2\sigma^2}},
+    x \in (-\infty, \infty)
+\end{equation}
+where $\mathcal{E}=\mu$ and $\mathcal{V}=\sigma^2$.
+The normal distribution is so important that we express it as $p(x) \sim \mathcal{N}(\mu, \sigma^2)$.
+
+\bigbreak
+\textbf{The PDF of Binomial distribution is}
+\begin{equation}
+    \label{Definition: PDF of Binomial distribution}
+    p_N(n)=
+    (N, n) \cdot r^n \cdot (1-r)^{N-n},
+    n \in [0, N]
+\end{equation}
+where $\mathcal{E}=N \cdot r$ and $\mathcal{V}=N \cdot r \cdot (1-r)$.
+
+\bigbreak
+\textbf{The PDF of Chi-squared distribution is}
+\begin{equation}
+    \label{Definition: PDF of Chi-squared distribution}
+    p_r(x)=
+    \frac{x^{r/2-1} e^{-x/2}}{\Gamma(r/2) 2^{r/2}},
+    x \in (0, \infty)
+\end{equation}
+where $\mathcal{E}=r$ and $\mathcal{V}=2r$.
+
+The statistic follows Chi-squared distribution refers
+\begin{equation*}
+    p_r(x) \sim \mathcal{X}^2(r) = \sum_{i=1}^{r} Y_i^2
+\end{equation*}
+where $Y_i \sim \mathcal{N}(0, 1)$, and $Y_i$s are independent with each other.
+
+\subsubsection{Gamma and Related Functions}
+\textbf{Gamma function}
+The function of generalized integral is defined as $\Gamma$ function,
+\begin{equation}
+    \label{Definition: Gamma function}
+    \Gamma(z) = \int_{0}^{\infty} t^{z-1} e^{-t} dt
+\end{equation}
+
+There are several useful properties,
+\begin{equation}
+    \label{Property: Gamma function}
+    \begin{split}
+        \Gamma(0) & = 1 \\
+        \Gamma(1/2) & = \sqrt{\pi} \\
+        \Gamma(z) & = z \cdot \Gamma(z-1) \\
+        \Gamma(n) & = n!, n \in {1, 2, 3, \dots} \\
+        \Gamma(z) & = 2 \cdot \int_{0}^{\infty} t^{2z-1} e^{-t^2} dt
+    \end{split}
+\end{equation}
+
+The $\Gamma$ function can be used to calculate the integral functional of distributions.
+
+\textbf{Beta Function}
+The $\Gamma$ function is also useful in compute binominal-like integral functions.
+The Beta function is defined as
+\begin{equation}
+    \label{Definition: Beta Function}
+    B(\alpha, \beta) = \frac{\Gamma(\alpha) \cdot \Gamma(\beta)}{\Gamma(\alpha + \beta)}
+\end{equation}
+
+\subsection{Parameter Estimation}
+One goal of statistical analysis is to \emph{determine the parameters of the distribution}.
+There are several methods of the estimation:
+\begin{itemize}
+    \item MLE: Maximum Likelihood Estimation
+    \item MAP: Maximum A posteriori Probability estimate
+\end{itemize}
+
+\begin{subappendices}
+
+    \subsection{Proofs}
+    \subfile{lemmas/Relationship between expectation and variance}
+    \subfile{lemmas/Second-order mixing moment of independent variables}
+    \subfile{lemmas/Variance of mean value}
+
+\end{subappendices}
+
+\end{document}
