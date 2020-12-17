@@ -64,7 +64,7 @@ class Lemma_in_LaTeX(object):
 
             if os.path.isfile(path):
                 print(f'Warning: Lemma file of {name} exists.')
-                continue
+                # continue
 
             with open(path, 'wb') as f:
                 # * Add documentclass
@@ -84,6 +84,8 @@ class Lemma_in_LaTeX(object):
                 f.write(f'\\textbf{__name}\n'.encode())
                 f.write(b'% ---------------------------------------\n')
                 f.write(b'%    Original contents\n')
+                f.write(
+                    f'%    File: ..\\{os.path.basename(self.path)}\n'.encode())
                 f.write(b'\\begin{quote}\n')
                 content = lemma_table[name].encode()
                 f.write(content)
