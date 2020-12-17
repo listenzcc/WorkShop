@@ -39,6 +39,9 @@ class Lemma_in_LaTeX(object):
         lemma_table = dict()
         for lemma in lemmas:
             label, contents = self.parse_lemma(lemma)
+            assert(len(label.strip()) > 0)
+            assert(len(contents.strip()) > 0)
+            assert(label not in lemma_table)
             lemma_table[label] = contents
         # print(lemma_table)
 
